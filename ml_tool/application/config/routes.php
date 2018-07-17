@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "home";
+$route['home/item'] = 'home/get_item_by_type';
 $route['404_override'] = '';
 
 

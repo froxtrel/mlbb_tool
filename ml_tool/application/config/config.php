@@ -14,7 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://10.10.1.107/ci_boilerplate/';
+$config['cdr_limit'] = 40;
+$config['atk_spd_limit'] = 250;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +59,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = '';
+$config['url_suffix'] = '.cf';
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +108,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'BP_';
 
 
 /*
@@ -224,7 +226,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'fkdkldsklsdk98934894389348439ue39ue3u9ru9r3u93ru9478394yudshjdshjd';
 
 /*
 |--------------------------------------------------------------------------
