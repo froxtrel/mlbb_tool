@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://10.10.1.107/ci_boilerplate/';
+$config['base_url']	= 'http://10.10.1.107/ml_tool/';
 $config['cdr_limit'] = 40;
 $config['atk_spd_limit'] = 250;
 
