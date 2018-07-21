@@ -60,7 +60,7 @@
     <header>
     <?php
     /* codeigniter-boilerplate: main navigation *******************************/
-    // echo $nav
+    echo $nav
     ?>
     </header>
     <div id="main" role="main">

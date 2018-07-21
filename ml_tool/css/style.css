@@ -20,6 +20,12 @@ th,td {
 
 }
 
+.added_gr {
+
+    font-weight: bold;
+    color: green;
+}
+
 hr {
 
 	align:center;

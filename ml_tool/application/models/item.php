@@ -5,7 +5,12 @@ class Item extends CI_Model
 
 {
     function get_all_item($type, $state)
-    {
+    {   
+        if(!$type) {
+
+           $type = 'ITEM_MOVE_SPEED_FLAT';
+        }
+
         $query = $this->db->query("SELECT * FROM item WHERE " . $type . " > 0 " . $state);
         if ($query->num_rows() > 0)
         {

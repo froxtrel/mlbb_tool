@@ -6,16 +6,21 @@ class Hero extends CI_Model
 {
     function get_all_hero()
     {
-        $query = $this->db->query("SELECT * FROM hero WHERE HERO_MANA_REGEN_GR != 0 ORDER BY HERO_NAME DESC LIMIT 10 ");
+        $query = $this->db->query("SELECT * FROM hero WHERE HERO_MANA_REGEN_GR != 0 ");
         if ($query->num_rows() > 0)
         {
             return $query->result_array();
         }
     }
 
-    function get_hero_by_id($id)
-    {
-        $query = $this->db->query("SELECT * FROM hero WHERE ID = ".$id."");
+    function get_hero_by_id($hero_id)
+    {   
+        if(!$hero_id) {
+
+           $hero_id = 1;
+        }
+
+        $query = $this->db->query("SELECT * FROM hero WHERE ID = ".$hero_id."");
         if ($query->num_rows() > 0)
         {
             return $query->result_array();

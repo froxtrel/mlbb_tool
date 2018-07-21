@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Home extends BP_Controller
+class Items extends BP_Controller
 
 {
     public
@@ -23,6 +23,7 @@ class Home extends BP_Controller
         $data['item'] = false;
         $data['ratio_build'] = false;
         $data['hero_info'] = false;
+        $data['hero'] = $this->Hero->get_all_hero();
         $this->build_content($data);
         $this->render_page();
     }
@@ -42,9 +43,11 @@ class Home extends BP_Controller
     }
 
     function render_ratio_build($item_type, $state)
-    {
+    {   
+        error_reporting(0);
         $ratio = array();
         $key   = array();
+        $hero_id = $this->input->post('hero');
 
         $data['column'] = $this->item_column();
         $data['hero_column'] = $this->hero_column();
@@ -59,11 +62,10 @@ class Home extends BP_Controller
             array_push($key, $id);
         endforeach;
         $item_id = (implode(',', array_slice($key, 0, 6)));
-
-        $data['ratio_build'] = $this->Item->get_ratio_item($item_id);
         $data['hero'] = $this->Hero->get_all_hero();
-        $data['hero_info'] = $this->Hero->get_hero_by_id($this->input->post('hero'));
-
+        $data['ratio_build'] = $this->Item->get_ratio_item($item_id);
+        $data['hero_info'] = $this->Hero->get_hero_by_id($hero_id);
+        $data['level'] = $this->input->post('level');
 
         $this->session->set_userdata('stat', $item_type);
         $this->build_content($data);
@@ -73,9 +75,14 @@ class Home extends BP_Controller
     public
 
     function get_item_by_type()
-    {
+    {       
+        $item_type = $this->input->post('build');
         $state = $this->input->post('check') ? '' : 'AND ITEM_CATEGORY !=\'BASIC\'';
-        $this->render_ratio_build($this->input->post('build') , $state);
+        $this->render_ratio_build($item_type , $state);
+    }
+
+    function get_growth_rate() {
+
     }
 }
 

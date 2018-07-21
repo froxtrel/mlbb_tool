@@ -1,34 +1,27 @@
 <br>
 <div class="container" >
-
-  <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#1">ITEM LIST</a></li>
-    <li class="active"><a data-toggle="tab" href="#2">GOLD/STATS RATIO</a></li>
-    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    <!-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> -->
-  </ul>
-  <br>
-
-  <div class="tab-content">
   <div id="2" class="row tab-pane fade in active">
     <div class="col-md-12">
         <span class="label label-primary">Patch Version : 1.2.88.296.1</span>
         <br><br>
-        <?php echo form_open('home/item'); ?>
+        <?php echo form_open('items'); ?>
             <p>
-              <select class="form-control" id="hero" name="hero">
+              <select class="form-control" id="hero" name="hero" required>
+                <option value="" disabled selected>Select your champion</option>
                    <?php foreach ($hero as $row) :?>
-                      <option  value="<?=$row['ID'];?>"> <?=$row['HERO_NAME'];?> </option>
+                      <option  value="<?=$row['ID'];?>"> HERO NAME : <?=$row['HERO_NAME'];?> </option>
                    <?php endforeach;?>
               </select>
             <p>
-             <select class="form-control" id="level" name="level">
-                   <?php $x = 1; while ( $x <= 15) {;?>
-                    <option value="<?=$x;?>"> HERO LEVEL : <?=$x;?> </option>
+             <select class="form-control" id="level" name="level" required>
+                <option value="" disabled selected>Select your champion level</option>
+                   <?php $x = 0; while ( $x <= 14) {;?>
+                    <option value="<?=$x;?>"> HERO LEVEL : <?=$x + 1 ;?> </option>
                    <?php $x++; };?>
               </select>
             <p>
-            <select class="form-control" id="build" name="build">
+            <select class="form-control" id="build" name="build" required>
+                <option value="" disabled selected>Select your item attributes type</option>
                     <option value="ITEM_PHYSICAL_ATK"> PHYSICAL ATK</option>
                     <option value="ITEM_LIFESTEAL"> LIFESTEAL</option>
                     <option value="ITEM_CD_REDUCTION"> CD REDUCTION</option>
@@ -62,8 +55,10 @@
             <br>
          <?php echo form_close(); ?>
 
-         <script type="text/javascript">
+        <script type="text/javascript">
             document.getElementById('build').value = "<?php echo $_POST['build'];?>";
+            document.getElementById('hero').value  =  "<?php echo $_POST['hero'];?>";
+            document.getElementById('level').value = "<?php echo $_POST['level'];?>";
         </script>
 
         <br>
@@ -80,22 +75,17 @@
                 <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table">
                   <thead>
                     <tr>
-                      <th>MOVESPEED</th>
+                      <th>M.SPEED</th>
                       <th>ATTACK</th>
-                      <th>MAGIC POWER</th>
+                      <th>M.POWER</th>
                       <th>ARMOR</th>
-                      <th>MAGIC ARMOR</th>
+                      <th>M.ARMOR</th>
                       <th>HP</th>
                       <th>MANA</th>
-                      <th>ATTACK SPEED</th>
+                      <th>ATK SPEED</th>
                       <th>HP REGEN</th>
-                      <th>MANA REGEN</th>
-                      <th>CRIT CHANCE</th>
-                      <!-- <th>MOVESPEED</th>
-                      <th>MOVESPEED</th>
-                      <th>MOVESPEED</th>
-                      <th>MOVESPEED</th>
-                      <th>MOVESPEED</th> -->
+                      <th>MANA REG</th>
+                      <th>CRIT </th>
                     </tr>
                     <tbody>
                         <tr>
@@ -108,9 +98,24 @@
 
                                    $exclude = ['HERO_NAME','HERO_PHOTO','HERO_ABILITY_CRIT_RATE'];
 
-                                   if(!in_array($key, $exclude)) {
-                              ?>
-                               <td> <?=$row[$key];?> </td>
+                                   if(!in_array($key, $exclude)) {                                   
+                            ?>
+                               <td> <?php 
+
+                                   if($key != 'HERO_ATK_SPEED') {
+
+                                      $normal_stat =  $row[$key] + (@$row[$key.'_GR'] * $level).'<p><small> ( '.$row[$key].'<span class="added_gr"> + '.@$row[$key.'_GR'] * $level.'</span>)</small></p>';
+
+                                   } else {
+
+                                      $normal_stat =  ($row[$key]/100) + ((@$row[$key.'_GR']/1000) * $level).'<p><small> ('.($row[$key]/100).'<span class="added_gr"> + '.((@$row[$key.'_GR']/1000) * $level).'</span>)</small></p>';
+                                   }
+
+                                     echo $normal_stat;
+
+                                   ?> 
+
+                               </td> <!--NOTICE INGNORED HERE-->
 
                              <?php }; endforeach;?>
 
@@ -118,7 +123,7 @@
 
                           <?php } else {?>
 
-                                <td>NO INFO</td>
+                          <td>NO INFO</td>
 
                         <?php };?>
 
@@ -263,7 +268,6 @@
         <HR>
   </div>
 
-  </div> <!--END TAB CONTAINER-->
   <br>
 
         <div class="fb-comments" data-href="http://localhost/ci_boilerplate/home/item.html" data-width="100%" data-numposts="5"></div>
