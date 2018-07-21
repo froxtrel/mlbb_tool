@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://10.10.1.107/ml_tool/';
+$config['base_url']	= 'http://localhost/ml_tool/';
 $config['cdr_limit'] = 40;
 $config['atk_spd_limit'] = 250;
 
@@ -59,7 +59,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = '.cf';
+$config['url_suffix'] = '';
 
 /*
 |--------------------------------------------------------------------------

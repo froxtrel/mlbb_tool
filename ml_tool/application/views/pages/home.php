@@ -1,10 +1,32 @@
 <br>
 <div class="container" >
-  <div class="row">
+
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#1">ITEM LIST</a></li>
+    <li class="active"><a data-toggle="tab" href="#2">GOLD/STATS RATIO</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <!-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> -->
+  </ul>
+  <br>
+
+  <div class="tab-content">
+  <div id="2" class="row tab-pane fade in active">
     <div class="col-md-12">
         <span class="label label-primary">Patch Version : 1.2.88.296.1</span>
         <br><br>
         <?php echo form_open('home/item'); ?>
+            <p>
+              <select class="form-control" id="hero" name="hero">
+                   <?php foreach ($hero as $row) :?>
+                      <option  value="<?=$row['ID'];?>"> <?=$row['HERO_NAME'];?> </option>
+                   <?php endforeach;?>
+              </select>
+            <p>
+             <select class="form-control" id="level" name="level">
+                   <?php $x = 1; while ( $x <= 15) {;?>
+                    <option value="<?=$x;?>"> HERO LEVEL : <?=$x;?> </option>
+                   <?php $x++; };?>
+              </select>
             <p>
             <select class="form-control" id="build" name="build">
                     <option value="ITEM_PHYSICAL_ATK"> PHYSICAL ATK</option>
@@ -44,8 +66,75 @@
             document.getElementById('build').value = "<?php echo $_POST['build'];?>";
         </script>
 
-        <br><br>
-        <center><b> BEST GOLD/ATTRIBUTES RATIO ITEM </b></center>
+        <br>
+        <div class="well">
+         <center><b> HERO STATS </b></center>
+        </div>
+
+        <hr>
+
+          <div class="row">
+
+            <div class="col-md-12">
+
+                <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table">
+                  <thead>
+                    <tr>
+                      <th>MOVESPEED</th>
+                      <th>ATTACK</th>
+                      <th>MAGIC POWER</th>
+                      <th>ARMOR</th>
+                      <th>MAGIC ARMOR</th>
+                      <th>HP</th>
+                      <th>MANA</th>
+                      <th>ATTACK SPEED</th>
+                      <th>HP REGEN</th>
+                      <th>MANA REGEN</th>
+                      <th>CRIT CHANCE</th>
+                      <!-- <th>MOVESPEED</th>
+                      <th>MOVESPEED</th>
+                      <th>MOVESPEED</th>
+                      <th>MOVESPEED</th>
+                      <th>MOVESPEED</th> -->
+                    </tr>
+                    <tbody>
+                        <tr>
+
+                        <?php if($hero_info){ ?>
+
+                          <?php foreach ($hero_info as $row) :?>
+
+                            <?php foreach ($hero_column as $key):
+
+                                   $exclude = ['HERO_NAME','HERO_PHOTO','HERO_ABILITY_CRIT_RATE'];
+
+                                   if(!in_array($key, $exclude)) {
+                              ?>
+                               <td> <?=$row[$key];?> </td>
+
+                             <?php }; endforeach;?>
+
+                           <?php endforeach;?>
+
+                          <?php } else {?>
+
+                                <td>NO INFO</td>
+
+                        <?php };?>
+
+                        </tr>
+                    </tbody>
+                  </thead>
+                </table>
+
+            </div>
+
+          </div>
+
+        <hr>
+        <div class="well">
+         <center><b> BEST GOLD/ATTRIBUTES RATIO ITEM </b></center>
+        </div>
         <p></p>
         <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table">
           <thead>
@@ -86,6 +175,9 @@
           </thead>
         </table>
         <br><br>
+        <div class="well">
+         <center><b> ITEM GOLD/ATTRIBUTES LIST </b></center>
+        </div>
         <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table" class="table-striped">
           <thead>
             <tr>
@@ -138,7 +230,7 @@
                              $unique = explode("<hr>", $row['ITEM_PASSIVE']);
                              foreach ($unique as $value):?>
                                
-                               <p class="unique"><?=$value;?></p>
+                               <p class="unique"><?=str_replace('Unique','<span class="passive">Unique</span>',$value);?></p>
 
                             <?php endforeach;?>
 
@@ -163,12 +255,18 @@
             </tbody>
           </thead>
         </table>
-        <br>
-
-        <div class="fb-comments" data-href="http://localhost/ci_boilerplate/home/item.html" data-width="100%" data-numposts="5"></div>
 
     </div>
+  </div> 
+
+  <div id="1" class="row tab-pane fade in ">
+        <HR>
   </div>
+
+  </div> <!--END TAB CONTAINER-->
+  <br>
+
+        <div class="fb-comments" data-href="http://localhost/ci_boilerplate/home/item.html" data-width="100%" data-numposts="5"></div>
 </div>
 
 

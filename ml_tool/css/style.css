@@ -38,6 +38,22 @@ hr {
 	font-weight: 700;
 }
 
+.passive {
+
+    color: #1E824C;
+    text-transform: uppercase;
+}
+
+
+.well {
+    border-radius: 0px;
+    background-color: #03C9A9;
+    color: #fff;
+    font-size: 15px;
+}
+
+
+
 .modal-content {
     -webkit-border-radius: 0;
     -webkit-background-clip: padding-box;

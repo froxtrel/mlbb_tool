@@ -13,6 +13,7 @@ class Home extends BP_Controller
         $this->description = "Item per Gold ratio..";
         $this->GFont = array("Karla");
         $this->load->model('Item');
+        $this->load->model('Hero');
     }
 
     public
@@ -21,6 +22,7 @@ class Home extends BP_Controller
     {
         $data['item'] = false;
         $data['ratio_build'] = false;
+        $data['hero_info'] = false;
         $this->build_content($data);
         $this->render_page();
     }
@@ -34,12 +36,19 @@ class Home extends BP_Controller
         'ITEM_MANA','ITEM_MOVE_SPEED_FLAT','ITEM_MOVE_SPEED_PER','ITEM_ATK_SPEED_FLAT','ITEM_ATK_SPEED_PER','ITEM_MAGIC_POWER','RESILIENCE','ITEM_PASSIVE'];
     }
 
+    function hero_column() {
+
+        return $hero_column = ['HERO_NAME','HERO_PHOTO','HERO_MOVE_SPEED','HERO_PHYSICAL_ATK','HERO_MAGIC_POWER','HERO_ARMOR','HERO_MAGIC_ARMOR','HERO_HP','HERO_MANA','HERO_ATK_SPEED','HERO_HP_REGEN','HERO_MANA_REGEN','HERO_BASIC_CRIT_RATE','HERO_ABILITY_CRIT_RATE'];
+    }
+
     function render_ratio_build($item_type, $state)
     {
         $ratio = array();
         $key   = array();
 
         $data['column'] = $this->item_column();
+        $data['hero_column'] = $this->hero_column();
+
         $data['item'] = $this->Item->get_all_item($item_type, $state);
         foreach($data['item'] as $row):
             $item_ratio = ($row['ITEM_PRICE'] / $row[$item_type]);
@@ -50,7 +59,12 @@ class Home extends BP_Controller
             array_push($key, $id);
         endforeach;
         $item_id = (implode(',', array_slice($key, 0, 6)));
+
         $data['ratio_build'] = $this->Item->get_ratio_item($item_id);
+        $data['hero'] = $this->Hero->get_all_hero();
+        $data['hero_info'] = $this->Hero->get_hero_by_id($this->input->post('hero'));
+
+
         $this->session->set_userdata('stat', $item_type);
         $this->build_content($data);
         $this->render_page();
