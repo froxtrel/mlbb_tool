@@ -6,7 +6,7 @@ class Hero extends CI_Model
 {
     function get_all_hero()
     {
-        $query = $this->db->query("SELECT * FROM hero WHERE HERO_MANA_REGEN_GR != 0 ");
+        $query = $this->db->query("SELECT * FROM hero ");
         if ($query->num_rows() > 0)
         {
             return $query->result_array();
