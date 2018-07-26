@@ -18,6 +18,16 @@ class Item extends CI_Model
         }
     }
 
+    function get_item_name() 
+    {
+        $query = $this->db->query("SELECT ID,ITEM_NAME FROM item");
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
+
+    }
+
     function get_ratio_item($item_id)
     {
         $query = $this->db->query("SELECT * FROM item WHERE ID in(" . $item_id . ")");

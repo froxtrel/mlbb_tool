@@ -1,59 +1,71 @@
 <br>
-<div class="container" >
+<div class="container">
   <div id="2" class="row tab-pane fade in active">
     <div class="col-md-12">
-        <span class="label label-primary">Patch Version : 1.2.88.296.1</span>
-        <br><br>
-        <?php echo form_open('items'); ?>
-            <p>
-              <select class="form-control" id="hero" name="hero" required>
-                <option value="" disabled selected>Select your champion</option>
-                   <?php foreach ($hero as $row) :?>
-                      <option  value="<?=$row['ID'];?>"> HERO NAME : <?=$row['HERO_NAME'];?> </option>
-                   <?php endforeach;?>
-              </select>
-            <p>
-             <select class="form-control" id="level" name="level" required>
-                <option value="" disabled selected>Select your champion level</option>
-                   <?php $x = 0; while ( $x <= 14) {;?>
-                    <option value="<?=$x;?>"> HERO LEVEL : <?=$x + 1 ;?> </option>
-                   <?php $x++; };?>
-              </select>
-            <p>
-            <select class="form-control" id="build" name="build" required>
-                <option value="" disabled selected>Select your item attributes type</option>
-                    <option value="ITEM_PHYSICAL_ATK"> PHYSICAL ATK</option>
-                    <option value="ITEM_LIFESTEAL"> LIFESTEAL</option>
-                    <option value="ITEM_CD_REDUCTION"> CD REDUCTION</option>
-                    <option value="ITEM_PHYSICAL_ARMOR"> PHYSICAL ARMOR</option>
-                    <option value="ITEM_SPELL_LIFESTEAL"> SPELL LIFESTEAL</option>
-                    <option value="ITEM_MANA_REGEN"> MANA REGEN</option>
-                    <option value="ITEM_MAGIC_ARMOR"> MAGIC ARMOR</option>
-                    <option value="ITEM_MAGIC_PEN_FLAT"> MAGIC PEN FLAT</option>
-                    <option value="ITEM_PHYSICAL_PEN_FLAT" disabled> PHYSICAL PEN FLAT</option>
-                    <option value="ITEM_MAGIC_PEN_PER"> MAGIC PEN PER</option>
-                    <option value="ITEM_PHYSICAL_PEN_PER"> PHYSICAL PEN PER</option>
-                    <option value="ITEM_CRIT_CHANCE"> CRIT CHANCE</option>
-                    <option value="ITEM_HP_REGEN"> HP REGEN</option>
-                    <option value="ITEM_CRIT_REDUCTION"> CRIT REDUCTION</option>
-                    <option value="ITEM_HP"> HP</option>
-                    <option value="ITEM_MANA"> MANA</option>
-                    <option value="ITEM_MOVE_SPEED_FLAT"> MOVE SPEED FLAT</option>
-                    <option value="ITEM_MOVE_SPEED_PER"> MOVE SPEED PER</option>
-                    <option value="ITEM_ATK_SPEED_FLAT" disabled> ATK SPEED FLAT</option>
-                    <option value="ITEM_ATK_SPEED_PER"> ATK SPEED PER</option>
-                    <option value="ITEM_MAGIC_POWER"> MAGIC POWER</option>
-                    <option value="RESILIENCE"> RESILIENCE</option>
-              </select>
-            <br>              
-            <div class="checkbox">
-              <label><input type="checkbox" name="check" > <?= strtoupper('Includes Low Tier Item');?></label>
-              <p></p>
-              <label><input type="checkbox" name="potion" checked disabled="true"> <?= strtoupper('Includes Potion Item');?></label>
+
+      <div class="row">
+          <div class="col-md-6">
+            <br><br><br>
+              <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
+                <br><br>
+                <?php echo form_open('items'); ?>
+                    <p>
+                      <select class="form-control" id="hero" name="hero" required>
+                        <option value="" disabled selected>Select your champion</option>
+                           <?php foreach ($hero as $row) :?>
+                              <option  value="<?=$row['ID'];?>"> CHAMPION NAME : <?=$row['HERO_NAME'];?> </option>
+                           <?php endforeach;?>
+                      </select>
+                    <p>
+                     <select class="form-control" id="level" name="level" required>
+                        <option value="" disabled selected>Select your champion level</option>
+                           <?php $x = 0; while ( $x <= 14) {;?>
+                            <option value="<?=$x;?>"> CHAMPION LEVEL : <?=$x + 1 ;?> </option>
+                           <?php $x++; };?>
+                      </select>
+                    <p>
+                    <select class="form-control" id="build" name="build" required>
+                        <option value="" disabled selected>Select your item attributes type</option>
+                            <option value="ITEM_PHYSICAL_ATK"> PHYSICAL ATK</option>
+                            <option value="ITEM_LIFESTEAL"> LIFESTEAL</option>
+                            <option value="ITEM_CD_REDUCTION"> CD REDUCTION</option>
+                            <option value="ITEM_PHYSICAL_ARMOR"> PHYSICAL ARMOR</option>
+                            <option value="ITEM_SPELL_LIFESTEAL"> SPELL LIFESTEAL</option>
+                            <option value="ITEM_MANA_REGEN"> MANA REGEN</option>
+                            <option value="ITEM_MAGIC_ARMOR"> MAGIC ARMOR</option>
+                            <option value="ITEM_MAGIC_PEN_FLAT"> MAGIC PEN FLAT</option>
+                            <option value="ITEM_PHYSICAL_PEN_FLAT" disabled> PHYSICAL PEN FLAT</option>
+                            <option value="ITEM_MAGIC_PEN_PER"> MAGIC PEN PER</option>
+                            <option value="ITEM_PHYSICAL_PEN_PER"> PHYSICAL PEN PER</option>
+                            <option value="ITEM_CRIT_CHANCE"> CRIT CHANCE</option>
+                            <option value="ITEM_HP_REGEN"> HP REGEN</option>
+                            <option value="ITEM_CRIT_REDUCTION"> CRIT REDUCTION</option>
+                            <option value="ITEM_HP"> HP</option>
+                            <option value="ITEM_MANA"> MANA</option>
+                            <option value="ITEM_MOVE_SPEED_FLAT"> MOVE SPEED FLAT</option>
+                            <option value="ITEM_MOVE_SPEED_PER"> MOVE SPEED PER</option>
+                            <option value="ITEM_ATK_SPEED_FLAT" disabled> ATK SPEED FLAT</option>
+                            <option value="ITEM_ATK_SPEED_PER"> ATK SPEED PER</option>
+                            <option value="ITEM_MAGIC_POWER"> MAGIC POWER</option>
+                            <option value="RESILIENCE"> RESILIENCE</option>
+                      </select>
+                    <br>              
+                    <div class="checkbox">
+                      <label><input type="checkbox" name="check" > <?= strtoupper('Includes Low Tier Item');?></label>
+                      <p></p>
+                      <label><input type="checkbox" name="potion" checked disabled="true"> <?= strtoupper('Includes Potion Item');?></label>
+                    </div>
+                    <button class="form-control btn btn-success" type="submit" name="submit">SUBMIT</button>
+                    <br>
+                 <?php echo form_close(); ?>
+                </div>
+
+                <div class="col-md-6">
+                    <hr>
+                </div>
+
             </div>
-            <button class="form-control btn btn-success" type="submit" name="submit">SUBMIT</button>
-            <br>
-         <?php echo form_close(); ?>
+        
 
         <script type="text/javascript">
             document.getElementById('build').value = "<?php echo $_POST['build'];?>";

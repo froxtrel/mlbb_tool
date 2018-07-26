@@ -5,7 +5,7 @@
     </ul>
 </nav> -->
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -23,7 +23,8 @@
       <ul class="nav navbar-nav">
         <li class="<?php echo isActive($page_id,"champ")?>"><a href="<?php echo  base_url()?>champ">CHAMPION</a></li>
         <li class="<?php echo isActive($page_id,"items")?>"><a href="<?php echo  base_url()?>items">ITEMS</a></li>
-        <li class="dropdown">
+        <li class="<?php echo isActive($page_id,"simulations")?>"><a href="<?php echo  base_url()?>simulations">SIMULATIONS</a></li>
+      <!--   <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -52,7 +53,7 @@
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
-          </ul>
+          </ul> -->
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

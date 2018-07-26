@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Champ extends BP_Controller
+class Simulations extends BP_Controller
 
 {
     public
@@ -13,6 +13,7 @@ class Champ extends BP_Controller
         $this->description = "Mobile Legends Champ..";
         $this->GFont = array("Karla");
         $this->load->model('Hero');
+        $this->load->model('Item');
     }
 
     public
@@ -21,8 +22,16 @@ class Champ extends BP_Controller
     {
         $data['hero_column'] = $this->hero_column();
         $data['hero'] = $this->Hero->get_all_hero();
+        $data['item'] = $this->Item->get_item_name();
         $this->build_content($data);
         $this->render_page();
+    }
+
+
+    function get_hero_base_stats($id) {
+
+        $hero_stats = $this->Hero-> get_hero_by_id($id);
+        echo $JSON = json_encode($hero_stats);
     }
 
     

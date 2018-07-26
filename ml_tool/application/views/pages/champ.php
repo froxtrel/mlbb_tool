@@ -1,12 +1,15 @@
 <br>
-<div class="container-fluid" >
+<div class="container" >
 	<div class="row">
 		<div class="col-md-12">
+			<br><br><br>
+			<span class="label label-primary">Patch Version : 1.2.89.304.2</span>
+        	 <br><br>
 			 <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table" class="table-striped">
                   <thead>
                     <tr>
                     	<?php foreach ($hero_column as $row):?>
-                    		 	<th data-sortable="true"><?=str_replace('HERO','',str_replace('PHOTO',' ',str_replace('_', ' ', $row)));?></th> 
+                    		 	<th data-sortable="true"><?=str_replace('HERO','CHAMP',str_replace('PHOTO',' ',str_replace('_', ' ', $row)));?></th> 
                     	<?php endforeach ;?>                 
                     </tr>
                     <tbody>
@@ -21,10 +24,9 @@
                     		 		<?php 
 
                     		 			if($key == 'HERO_PHOTO') 
-                    		 				echo "<img src=".$row[$key]." width='70px' height='70px' class='img-circle'><p><b>".$row['HERO_NAME']."</b></p>";                 		 	
+                    		 				echo "<a href='javascript:void(0)'><img src=".$row[$key]." width='55' height='55px' class='img-rounded'></a><p><b>".$row['HERO_NAME']."</b></p>";                 		 	
                     		 			else                         		 			
                     		 				echo $row[$key];                   		 			
-
                     		 		?>                   		 			
                     		 	</td>
                     	    <?php endforeach ;?>  

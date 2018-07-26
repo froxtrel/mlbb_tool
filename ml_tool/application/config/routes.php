@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "items";
+$route['default_controller'] = "champ";
 $route['items'] = 'items/get_item_by_type';
 $route['404_override'] = '';
 
