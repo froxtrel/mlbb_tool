@@ -27,7 +27,7 @@
                      <select class="form-control" id="level" name="level" required>
                         <option value="" disabled selected>Select your champion level</option>
                            <?php $x = 0; while ( $x <= 14) {;?>
-                            <option value="<?=$x;?>"> CHAMPION LEVEL : <?=$x + 1 ;?> </option>
+                            <option value="<?=$x;?>"> CHAMPION LEVEL : <?=$x + 1;?> </option>
                            <?php $x++; };?>
                       </select>
                     <p>
@@ -37,8 +37,8 @@
                    <?php $x = 1; while ( $x <= 6) {;?>
 
                     <p>
-                     <select class="form-control" id="slot<?=$x;?>" name="slot<?=$x;?>" required>
-                        <option value="" disabled selected>Select item slot <?=$x;?> </option>
+                     <select class="slot form-control" id="slot<?=$x;?>" name="slot<?=$x;?>" required>
+                        <option value="95" disabled selected>Select item slot <?=$x;?> </option>
                            <?php foreach ($item as $row) :?>
                               <option  value="<?=$row['ID'];?>"> ITEM <?=$x;?> : <?=$row['ITEM_NAME'];?> </option>
                            <?php endforeach;?>
@@ -58,6 +58,11 @@
             </tr>
           </thead>
           <tbody>
+
+            <tr>
+              <td>ATTACK</td>
+              <td><span id="attack">0</span></td>
+            </tr>
 
             <tr>
               <td>HP</td>
@@ -135,8 +140,13 @@
             </tr>
 
             <tr>
-              <td>ATTACK</td>
-              <td><span id="attack">0</span></td>
+              <td>CRIT REDUCTION</td>
+              <td><span id="crit_reduction">0</span></td>
+            </tr>
+
+            <tr>
+              <td>RESILIENCE</td>
+              <td><span id="resilience">0</span></td>
             </tr>
            
           </tbody>

@@ -28,14 +28,21 @@ class Simulations extends BP_Controller
     }
 
 
-    function get_hero_base_stats($id) {
-
+    function get_hero_base_stats($id) 
+    {
         $hero_stats = $this->Hero-> get_hero_by_id($id);
         echo $JSON = json_encode($hero_stats);
     }
 
+    function get_item_base_stats($id) 
+    {   
+        $item_stats = $this->Item-> get_all_item_by_id($id);
+        echo $JSON = json_encode($item_stats);
+    }
+
     
-    function hero_column() {
+    function hero_column() 
+    {
 
         return $hero_column = ['HERO_PHOTO','HERO_MOVE_SPEED','HERO_PHYSICAL_ATK','HERO_ARMOR','HERO_MAGIC_ARMOR','HERO_HP','HERO_MANA','HERO_ATK_SPEED','HERO_HP_REGEN','HERO_MANA_REGEN'];
     }
