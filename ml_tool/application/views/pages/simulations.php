@@ -75,15 +75,15 @@
                     <p>
 
     </div>
-	</div>
+	</div>  
 
   <div class="row">
-      <div class="col-md-12">
+          <div class="col-md-12">
       <hr>
 
         <center>CHAMPION ATTRIBUTES</center>
         <p></p>
-        <table class="table table-bordered">
+        <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table" class="table-striped">
           <thead>
             <tr>
               <th>ATTRIBUTES</th>
@@ -157,6 +157,7 @@
         </table>
       </div>
   </div>
+
 
 </div>
 
