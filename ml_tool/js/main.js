@@ -17,7 +17,7 @@ function add_item(hero,slot)
       dataType: 'json',
       success: function (r) 
       {   
-          console.log(r)
+          // console.log(r)
 
           hero.setAttack(r["0"].ITEM_PHYSICAL_ATK);
           hero.setAttackSpeed(r["0"].ITEM_ATK_SPEED_PER);

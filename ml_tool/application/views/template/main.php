@@ -31,6 +31,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url()?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo base_url()?>css/style.css">
+  <link rel="stylesheet" href="http://www.marghoobsuleman.com/mywork/jcomponents/image-dropdown/samples/css/msdropdown/dd.css">
+  
   <?php foreach($css as $c):?>
   <link rel="stylesheet" href="<?php echo base_url()?>css/<?php echo $c?>">
   <?php endforeach;?>
@@ -76,6 +78,7 @@
 
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://www.marghoobsuleman.com/mywork/jcomponents/image-dropdown/samples/js/msdropdown/jquery.dd.js"></script>
   <script>window.jQuery || document.write('<script src="<?php echo base_url()?>js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -102,5 +105,15 @@
       </script>
     </body>
 </html>
+
+<script language="javascript">
+$(document).ready(function(e) {
+try {
+$("body select").msDropDown();
+} catch(e) {
+alert(e.message);
+}
+});
+</script>
 
 
