@@ -23,6 +23,29 @@ function Champion (hp,mana,armor,hp_regen,mana_regen,mag_armor,move_speed,atk_sp
   this.resilience = 0
   this.crit_reduction = 0
 
+  //emblem stat
+  this.em_hp = 0
+  this.em_mana = 0
+  this.em_armor = 0
+  this.em_physical_pen = 0
+  this.em_physical_pen_flat = 0
+  this.em_magic_pen_per = 0
+  this.em_magic_pen_flat = 0
+  this.em_lifesteal = 0
+  this.em_hp_regen = 0
+  this.em_mana_regen = 0
+  this.em_magic_power = 0
+  this.em_magic_armor = 0
+  this.em_spell_vamp = 0
+  this.em_move_speed = 0
+  this.em_move_speed_per = 0
+  this.em_cdr = 0
+  this.em_atk_speed = 0
+  this.em_crit_chance = 0
+  this.em_attack = 0
+  this.em_level = 0
+
+
 
   //hero growth
   this.atk_growth = 0
@@ -56,149 +79,149 @@ function Champion (hp,mana,armor,hp_regen,mana_regen,mag_armor,move_speed,atk_sp
     this.level = level
   }
 
-  this.setAttackGrowth = function (growth,lvl) 
+  this.setAttackGrowth = function (attack) 
   {
-    return this.attack = (parseInt(this.attack) + parseInt(growth) * parseInt(lvl))
+    return this.attack = attack
   }
 
-  this.setHpGrowth = function (growth,lvl) 
+  this.setHpGrowth = function (hp) 
   {
-    return this.hp = (parseInt(this.hp) + parseInt(growth) * parseInt(lvl))
+    return this.hp = hp
   }
 
-  this.setHpRegenGrowth = function (growth,lvl) 
+  this.setHpRegenGrowth = function (hp_regen) 
   {
-    return this.hp_regen = (parseInt(this.hp_regen) + parseInt(growth) * parseInt(lvl))
+    return this.hp_regen = hp_regen
   }
 
-  this.setManaGrowth = function (growth,lvl) 
+  this.setManaGrowth = function (mana) 
   {
-    return this.mana = (parseInt(this.mana) + parseInt(growth) * parseInt(lvl))
+    return this.mana = mana
   }
 
-  this.setManaRegenGrowth = function (growth,lvl) 
+  this.setManaRegenGrowth = function (mana_regen) 
   {
-    return this.mana_regen = (parseInt(this.mana_regen) + parseInt(growth) * parseInt(lvl))
+    return this.mana_regen = mana_regen
   }
 
-  this.setArmorGrowth = function (growth,lvl) 
+  this.setArmorGrowth = function (armor) 
   {
-    return this.armor = (parseInt(this.armor) + parseInt(growth) * parseInt(lvl))
+    return this.armor = armor
   }
 
-  this.setMagicArmorGrowth = function (growth,lvl) 
+  this.setMagicArmorGrowth = function (magic_armor) 
   {
-    return this.magic_armor = (parseInt(this.magic_armor) + (parseInt(growth) * parseInt(lvl)))
+    return this.magic_armor = magic_armor
   }
 
-  this.setAttackSpeedGrowth = function (growth,lvl) 
+  this.setAttackSpeedGrowth = function (atk_speed) 
   {
-    return this.atk_speed =  (parseFloat(this.atk_speed/100) + parseFloat((parseInt(growth) * parseInt(lvl))/1000))
+    return this.atk_speed =  atk_speed
   }
 
-  this.setAttack = function (added)
+  this.setAttack = function (attack)
   {
-    return this.attack = (parseInt(this.attack) + parseInt(added))
+    return this.attack = attack
   }
 
-  this.setHp = function (added)
+  this.setHp = function (hp)
   {
-    return this.hp = (parseInt(this.hp) + parseInt(added))
+    return this.hp = hp
   }
 
-  this.setMana = function (added)
+  this.setMana = function (mana)
   {
-    return this.mana = (parseInt(this.mana) + parseInt(added))
+    return this.mana = mana
   }
 
-  this.setArmor = function (added)
+  this.setArmor = function (armor)
   {
-    return this.armor = (parseInt(this.armor) + parseInt(added))
+    return this.armor = armor
   }
 
-  this.setPhysicalPen = function (added)
+  this.setPhysicalPen = function (physical_pen)
   {
-    return this.physical_pen = (parseInt(this.physical_pen) + parseInt(added))
+    return this.physical_pen = physical_pen
   }
 
-  this.setMagicPenFlat = function (added)
+  this.setMagicPenFlat = function (magic_pen_flat)
   {
-    return this.magic_pen_flat = (parseInt(this.magic_pen_flat) + parseInt(added))
+    return this.magic_pen_flat = magic_pen_flat
   }
 
-  this.setMagicPenPer = function (added)
+  this.setMagicPenPer = function (magic_pen_per)
   {
-    return this.magic_pen_per = (parseInt(this.magic_pen_per) + parseInt(added))
+    return this.magic_pen_per = magic_pen_per
   }
 
-  this.setLifesteal = function (added)
+  this.setLifesteal = function (lifesteal)
   {
-    return this.lifesteal = (parseInt(this.lifesteal) + parseInt(added))
+    return this.lifesteal = lifesteal
   }
 
-  this.setHpRegen = function (added)
+  this.setHpRegen = function (hp_regen)
   {
-    return this.hp_regen = (parseInt(this.hp_regen) + parseInt(added))
+    return this.hp_regen = hp_regen
   }
 
-  this.setManaRegen = function (added)
+  this.setManaRegen = function (mana_regen)
   {
-    return this.mana_regen = (parseInt(this.mana_regen) + parseInt(added))
+    return this.mana_regen = mana_regen
   }
 
-  this.setMagicPower = function (added)
+  this.setMagicPower = function (magic_power)
   {
-    return this.magic_power = (parseInt(this.magic_power) + parseInt(added))
+    return this.magic_power = magic_power
   }
 
-  this.setMagicArmor = function (added)
+  this.setMagicArmor = function (magic_armor)
   {
-    return this.magic_armor = (parseInt(this.magic_armor) + parseInt(added))
+    return this.magic_armor = magic_armor
   }
 
-  this.setManaRegen = function (added)
+  this.setManaRegen = function (mana_regen)
   {
-    return this.mana_regen = (parseInt(this.mana_regen) + parseInt(added))
+    return this.mana_regen = mana_regen
   }
 
-  this.setSpellVamp = function (added)
+  this.setSpellVamp = function (spell_vamp)
   {
-    return this.spell_vamp = (parseInt(this.spell_vamp) + parseInt(added))
+    return this.spell_vamp = spell_vamp
   }
 
-  this.setMoveSpeed = function (added)
+  this.setMoveSpeed = function (move_speed_flat)
   {
-    return this.move_speed_flat = (parseInt(this.move_speed_flat) + parseInt(added))
+    return this.move_speed_flat = move_speed_flat
   }
 
-  this.setCdr = function (added)
+  this.setCdr = function (cdr)
   {
-    return this.cdr = (parseInt(this.cdr) + parseInt(added))
+    return this.cdr = cdr
   }
 
-  this.setAttackSpeed = function (added)
+  this.setAttackSpeed = function (atk_speed)
   {
-    return this.atk_speed = (parseFloat(this.atk_speed) + parseFloat(added/100))
+    return this.atk_speed = atk_speed
   }
 
-  this.setCritChance = function (added)
+  this.setCritChance = function (crit_chance)
   {
-    return this.crit_chance = (parseInt(this.crit_chance) + parseInt(added))
+    return this.crit_chance = crit_chance
   }
 
-  this.setResilience = function (added)
+  this.setResilience = function (resilience)
   {
-    return this.resilience = (parseInt(this.resilience) + parseInt(added))
+    return this.resilience = resilience
   }
 
-  this.setCritReduction = function (added)
+  this.setCritReduction = function (crit_reduction)
   {
-    return this.crit_reduction = (parseInt(this.crit_reduction) + parseInt(added))
+    return this.crit_reduction = crit_reduction
   }
 
-  this.setMoveSpeedPer = function (added)
+  this.setMoveSpeedPer = function (move_speed_per)
   {
-    return this.move_speed_per = (parseInt(this.move_speed_per) + parseInt(added))
+    return this.move_speed_per = move_speed_per
   }
 
   // GETTER
@@ -270,7 +293,7 @@ function Champion (hp,mana,armor,hp_regen,mana_regen,mag_armor,move_speed,atk_sp
 
   this.getMoveSpeed = function () 
   {
-    return this.move_speed_flat = parseFloat(this.move_speed_flat + (parseFloat(this.move_speed_flat * (this.move_speed_per/100))))
+    return this.move_speed_flat 
   }
 
   this.getCdr = function () 
@@ -346,6 +369,168 @@ function Champion (hp,mana,armor,hp_regen,mana_regen,mag_armor,move_speed,atk_sp
   this.getMagicArmorGrowth = function () 
   {
     return this.magic_armor_growth
+  }
+
+  //Emblem
+  this.setEm_hp = function(em_hp)
+  {
+      this.em_hp = em_hp;
+  }
+  this.getEm_hp = function()
+  {
+      return this.em_hp;
+  }
+  this.setEm_mana = function(em_mana)
+  {
+      this.em_mana = em_mana;
+  }
+  this.getEm_mana = function()
+  {
+      return this.em_mana;
+  }
+  this.setEm_armor = function(em_armor)
+  {
+      this.em_armor = em_armor;
+  }
+  this.getEm_armor = function()
+  {
+      return this.em_armor;
+  }
+  this.setEm_physical_pen = function(em_physical_pen)
+  {
+      this.em_physical_pen = em_physical_pen;
+  }
+  this.getEm_physical_pen = function()
+  {
+      return this.em_physical_pen;
+  }
+  this.setEm_physical_pen_flat = function(em_physical_pen_flat)
+  {
+      this.em_physical_pen_flat = em_physical_pen_flat;
+  }
+  this.getEm_physical_pen_flat = function()
+  {
+      return this.em_physical_pen_flat;
+  }
+  this.setEm_magic_pen_per = function(em_magic_pen_per)
+  {
+      this.em_magic_pen_per = em_magic_pen_per;
+  }
+  this.getEm_magic_pen_per = function()
+  {
+      return this.em_magic_pen_per;
+  }
+  this.setEm_magic_pen_flat = function(em_magic_pen_flat)
+  {
+      this.em_magic_pen_flat = em_magic_pen_flat;
+  }
+  this.getEm_magic_pen_flat = function()
+  {
+      return this.em_magic_pen_flat;
+  }
+  this.setEm_lifesteal = function(em_lifesteal)
+  {
+      this.em_lifesteal = em_lifesteal;
+  }
+  this.getEm_lifesteal = function()
+  {
+      return this.em_lifesteal;
+  }
+  this.setEm_hp_regen = function(em_hp_regen)
+  {
+      this.em_hp_regen = em_hp_regen;
+  }
+  this.getEm_hp_regen = function()
+  {
+      return this.em_hp_regen;
+  }
+  this.setEm_mana_regen = function(em_mana_regen)
+  {
+      this.em_mana_regen = em_mana_regen;
+  }
+  this.getEm_mana_regen = function()
+  {
+      return this.em_mana_regen;
+  }
+  this.setEm_magic_power = function(em_magic_power)
+  {
+      this.em_magic_power = em_magic_power;
+  }
+  this.getEm_magic_power = function()
+  {
+      return this.em_magic_power;
+  }
+  this.setEm_magic_armor = function(em_magic_armor)
+  {
+      this.em_magic_armor = em_magic_armor;
+  }
+  this.getEm_magic_armor = function()
+  {
+      return this.em_magic_armor;
+  }
+  this.setEm_spell_vamp = function(em_spell_vamp)
+  {
+      this.em_spell_vamp = em_spell_vamp;
+  }
+  this.getEm_spell_vamp = function()
+  {
+      return this.em_spell_vamp;
+  }
+  this.setEm_move_speed = function(em_move_speed)
+  {
+      this.em_move_speed = em_move_speed;
+  }
+  this.getEm_move_speed = function()
+  {
+      return this.em_move_speed;
+  }
+  this.setEm_move_speed_per = function(em_move_speed_per)
+  {
+      this.em_move_speed_per = em_move_speed_per;
+  }
+  this.getEm_move_speed_per = function()
+  {
+      return this.em_move_speed_per;
+  }
+  this.setEm_cdr = function(em_cdr)
+  {
+      this.em_cdr = em_cdr;
+  }
+  this.getEm_cdr = function()
+  {
+      return this.em_cdr;
+  }
+  this.setEm_atk_speed = function(em_atk_speed)
+  {
+      this.em_atk_speed = em_atk_speed;
+  }
+  this.getEm_atk_speed = function()
+  {
+      return this.em_atk_speed;
+  }
+  this.setEm_crit_chance = function(em_crit_chance)
+  {
+      this.em_crit_chance = em_crit_chance;
+  }
+  this.getEm_crit_chance = function()
+  {
+      return this.em_crit_chance;
+  }
+  this.setEm_attack = function(em_attack)
+  {
+      this.em_attack = em_attack;
+  }
+  this.getEm_attack = function()
+  {
+      return this.em_attack;
+  }
+  this.setEm_level = function(em_level)
+  {
+      this.em_level = em_level;
+  }
+  this.getEm_level = function()
+  {
+      return this.em_level;
   }
 
   

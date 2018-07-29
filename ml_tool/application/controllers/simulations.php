@@ -14,6 +14,7 @@ class Simulations extends BP_Controller
         $this->GFont = array("Karla");
         $this->load->model('Hero');
         $this->load->model('Item');
+        $this->load->model('Emblem');
     }
 
     public
@@ -23,6 +24,7 @@ class Simulations extends BP_Controller
         $data['hero_column'] = $this->hero_column();
         $data['hero'] = $this->Hero->get_all_hero();
         $data['item'] = $this->Item->get_item_name();
+        $data['emblem'] = $this->Emblem->get_emblem_id_name_photo();
         $this->build_content($data);
         $this->render_page();
     }
@@ -38,6 +40,12 @@ class Simulations extends BP_Controller
     {   
         $item_stats = $this->Item-> get_all_item_by_id($id);
         echo $JSON = json_encode($item_stats);
+    }
+
+    function get_emblem_stats($id) 
+    {   
+        $emblem_info = $this->Emblem->get_emblem_info_by_id($id);
+        echo $JSON = json_encode($emblem_info);
     }
 
     

@@ -3,7 +3,7 @@
 	 <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
 
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">CHAMPION</a></li>
+      <li class="active"><a data-toggle="tab" href="#home">YOU</a></li>
      <!--  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
       <li><a data-toggle="tab" href="#menu2">Menu 2</a></li> -->
     </ul>
@@ -14,6 +14,10 @@
     <br>
     <div class="row">
 		<div class="col-md-6">
+
+        <hr>
+
+        <center>CHAMPION</center><p></p>
 
                   <select class="form-control" id="hero" name="hero" required>
                         <option value="" disabled selected>Select your champion</option>
@@ -53,7 +57,22 @@
         
         <hr>
 
-        <center>EMBLEM</center>
+        <center>EMBLEM</center><p></p>
+
+                  <select class=" slot form-control" id="emblem" name="emblem" required>
+                        <option value="10" disabled selected>Select your emblem </option>
+                           <?php foreach ($emblem as $row) :?>
+                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['EMBLEM_NAME'];?> </b></option>
+                           <?php endforeach;?>
+                      </select>
+                    <p>
+                     <select class=" slot form-control" id="em_level" name="em_level" required>
+                        <option value="0" disabled selected>Select your emblem level</option>
+                           <?php $x = 0; while ( $x <= 60) {;?>
+                            <option value="<?=$x;?>"> EMBLEM LEVEL : <?=$x;?> </option>
+                           <?php $x++; };?>
+                      </select>
+                    <p>
 
     </div>
 	</div>
