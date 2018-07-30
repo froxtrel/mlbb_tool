@@ -24,6 +24,7 @@ class Simulations extends BP_Controller
         $data['hero_column'] = $this->hero_column();
         $data['hero'] = $this->Hero->get_all_hero();
         $data['item'] = $this->Item->get_item_name();
+        $data['potion'] = $this->Item->get_all_potion();
         $data['emblem'] = $this->Emblem->get_emblem_id_name_photo();
         $this->build_content($data);
         $this->render_page();

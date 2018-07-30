@@ -20,12 +20,21 @@ class Item extends CI_Model
 
     function get_item_name() 
     {
-        $query = $this->db->query("SELECT ID,ITEM_NAME,ITEM_PHOTO FROM item ORDER BY ITEM_NAME ASC");
+        $query = $this->db->query("SELECT ID,ITEM_NAME,ITEM_PHOTO,ITEM_CATEGORY FROM item  WHERE ITEM_CATEGORY != 'POTION' ORDER BY ITEM_NAME ASC");
         if ($query->num_rows() > 0)
         {
             return $query->result_array();
         }
 
+    }
+
+    function get_all_potion() 
+    {
+        $query = $this->db->query("SELECT ID,ITEM_NAME,ITEM_PHOTO FROM item  WHERE ITEM_CATEGORY = 'POTION' ORDER BY ITEM_NAME ASC");
+        if ($query->num_rows() > 0)
+        {
+            return $query->result_array();
+        }
     }
 
     function get_ratio_item($item_id)

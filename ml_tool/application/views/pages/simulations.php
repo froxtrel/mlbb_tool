@@ -1,6 +1,10 @@
 <div class="container" >
 
 	 <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
+   <br><br>
+   <div class="alert alert-warning">
+     <strong>TODO :</strong> Add talent slot
+   </div>
 
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#home">YOU</a></li>
@@ -18,6 +22,16 @@
         <hr>
 
         <center>CHAMPION</center><p></p>
+
+        <div class="radio">
+          <label><input type="radio" name="hero_type" value="*" checked> ALL </label> &nbsp;
+          <label><input type="radio" name="hero_type" value="" > Assasin </label> &nbsp;
+          <label><input type="radio" name="hero_type" value="" > Tank </label> &nbsp;
+          <label><input type="radio" name="hero_type" value="" > Fighter </label> &nbsp;
+          <label><input type="radio" name="hero_type" value="" > Mage </label> &nbsp;
+          <label><input type="radio" name="hero_type" value="" > Marksmen </label> &nbsp;
+          <label><input type="radio" name="hero_type" value="" > Support </label> &nbsp;
+        </div>
 
                   <select class="form-control" id="hero" name="hero" required>
                         <option value="" disabled selected>Select your champion</option>
@@ -38,18 +52,38 @@
                   <hr>
                   <center> ITEM </center>
 
-                   <?php $x = 1; while ( $x <= 6) {;?>
+          <div class="radio">
+            <label><input type="radio" name="item_type" value="*" checked> ALL </label> &nbsp;
+            <label><input type="radio" name="item_type" value="ATTACK" > Attack </label> &nbsp;
+            <label><input type="radio" name="item_type" value="MAGIC" > Magic </label> &nbsp;
+            <label><input type="radio" name="item_type" value="DEFENSE" > Defense </label> &nbsp;
+            <label><input type="radio" name="item_type" value="MOVEMENT" > Movement </label> &nbsp;
+            <label><input type="radio" name="item_type" value="JUNGLE" > Jungle </label> &nbsp;
+            <label><input type="radio" name="item_type" value="BASIC" > Basic </label> &nbsp;
+          </div>
+
+            <?php $x = 1; while ( $x <= 6) {;?>
 
                     <p>
-                     <select class="slot form-control" id="slot<?=$x;?>" name="slot<?=$x;?>" required>
+                     <select  class="slot form-control" id="slot<?=$x;?>" name="slot<?=$x;?>" required>
                         <option value="95" disabled selected>Select item slot <?=$x;?> </option>
                            <?php foreach ($item as $row) :?>
-                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['ITEM_PHOTO'];?>"> ITEM <?=$x;?> : <?=$row['ITEM_NAME'];?> </option>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['ITEM_PHOTO'];?>"> ITEM <?=$x;?> : <?=$row['ITEM_NAME'];?> </option>
                            <?php endforeach;?>
                       </select>
                     <p>
 
             <?php $x++; };?>
+
+                    <p>
+                     <select  class="slot form-control" id="potion" name="potion" required>
+                        <option value="95" disabled selected>Select potion </option>
+                           <?php foreach ($potion as $row) :?>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['ITEM_PHOTO'];?>"> POTION : <?=$row['ITEM_NAME'];?> </option>
+                           <?php endforeach;?>
+                      </select>
+                    <p>
+
     
 		</div>
 
@@ -62,7 +96,7 @@
                   <select class=" slot form-control" id="emblem" name="emblem" required>
                         <option value="10" disabled selected>Select your emblem </option>
                            <?php foreach ($emblem as $row) :?>
-                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['EMBLEM_NAME'];?> </b></option>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['EMBLEM_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
@@ -73,6 +107,12 @@
                            <?php $x++; };?>
                       </select>
                     <p>
+
+         <hr>
+
+        <center>TALENT</center><p></p>
+
+
 
     </div>
 	</div>  

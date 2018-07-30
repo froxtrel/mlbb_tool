@@ -10,13 +10,72 @@ function f(string)
 
 function c(string)
 {
-  return parseFloat(string)
+  return Math.ceil(string)
 }
 
 function set(id,value)
 {       
     $(id).html(value)
 }
+
+function add_buff(hero,buff_id) 
+{
+    $.ajax(
+     {
+      url: 'http://localhost/ml_tool/simulations/' + buff_id,
+      method: 'POST',
+      dataType: 'json',
+      success: function (r) 
+      {   
+          // console.log(r)
+          show_stat(hero);
+        
+      },
+      error: function (err) 
+      {
+          return err
+      }
+  })
+} 
+
+function add_potion(hero,potion_id) 
+{
+    $.ajax(
+     {
+      url: 'http://localhost/ml_tool/simulations/get_item_base_stats/' + potion_id,
+      method: 'POST',
+      dataType: 'json',
+      success: function (r) 
+      {   
+          console.log(r)
+
+          hero.setAttack(i(hero.getAttack()) 
+            + i(r["0"].ITEM_PHYSICAL_ATK))
+
+          hero.setLifesteal(i(hero.getLifesteal()) 
+            + i(r["0"].ITEM_LIFESTEAL))
+
+          hero.setMagicPower(i(hero.getMagicPower()) 
+            + i(r["0"].ITEM_MAGIC_POWER))
+
+          hero.setCdr(i(hero.getCdr()) 
+            + i(r["0"].ITEM_CD_REDUCTION))
+
+          hero.setHp(i(hero.getHp()) 
+            + i(r["0"].ITEM_HP))
+
+          hero.setResilience(i(hero.getResilience()) 
+            + i(r["0"].RESILIENCE))
+
+          show_stat(hero);
+        
+      },
+      error: function (err) 
+      {
+          return err
+      }
+  })
+} 
 
 
 function add_emblem(hero,emblem_id) 
@@ -211,7 +270,21 @@ function add_level(hero,lvl)
 }
 
 function show_stat(hero)
-{
+{     
+
+          if((hero.getCdr() + hero.getEm_cdr()) > hero.getMax_cdr()) {
+              hero.setCdr(40)
+              hero.setEm_cdr(0)
+          }
+
+          if(hero.getAttackSpeed() > hero.getMax_atk_speed()) {
+              hero.setAttackSpeed(2.50)
+          }
+
+          if(hero.getMoveSpeed() > hero.getMax_movespeed()) {
+              hero.setMoveSpeed(450)
+          }
+ 
           set('#hp',c(hero.getHp() 
             + hero.getEm_hp()))
 
@@ -267,7 +340,7 @@ function show_stat(hero)
           set('#resilience',c(hero.getResilience()))
 }
 
-function getChampionStat(id,level,slot1 = 95, slot2 = 95, slot3 = 95, slot4 = 95, slot5 = 95, slot6 = 95 , emblem_id = 10 ,emblem_level = 0) 
+function getChampionStat(id,level,slot1 = 95, slot2 = 95, slot3 = 95, slot4 = 95, slot5 = 95, slot6 = 95 , emblem_id = 10 ,emblem_level = 0,potion = 95) 
 {
   $.ajax(
   {
@@ -307,6 +380,7 @@ function getChampionStat(id,level,slot1 = 95, slot2 = 95, slot3 = 95, slot4 = 95
           add_item(hero,slot4)
           add_item(hero,slot5)
           add_item(hero,slot6)
+          add_potion(hero,potion)
 
       },
       error: function (err) 
@@ -328,15 +402,25 @@ $( "#hero,#level,.slot" ).change(function() {
    var slot4 = $( "#slot4 option:selected" ).val()
    var slot5 = $( "#slot5 option:selected" ).val()
    var slot6 = $( "#slot6 option:selected" ).val()
+   var potion = $( "#potion option:selected" ).val()
    var emblem_id = $( "#emblem option:selected" ).val()
    var emblem_level = $( "#em_level option:selected" ).val()
 
    if( level == '' ) { level = 0 }
 
-   getChampionStat(id,level,slot1,slot2,slot3,slot4,slot5,slot6,emblem_id,emblem_level)
+   getChampionStat(id,level,slot1,slot2,slot3,slot4,slot5,slot6,emblem_id,emblem_level,potion)
 
 });
 
+
+$("input[name='item_type']").change(function(){
+
+    var radioValue = $("input[name='item_type']:checked").val();
+      if(radioValue){
+
+         console.log(radioValue)
+      }
+});
 
 
 
