@@ -23,7 +23,7 @@
 
         <center>CHAMPION</center><p></p>
 
-        <div class="radio">
+       <!--  <div class="radio">
           <label><input type="radio" name="hero_type" value="*" checked> ALL </label> &nbsp;
           <label><input type="radio" name="hero_type" value="" > Assasin </label> &nbsp;
           <label><input type="radio" name="hero_type" value="" > Tank </label> &nbsp;
@@ -32,7 +32,7 @@
           <label><input type="radio" name="hero_type" value="" > Marksmen </label> &nbsp;
           <label><input type="radio" name="hero_type" value="" > Support </label> &nbsp;
         </div>
-
+ -->
                   <select class="form-control" id="hero" name="hero" required>
                         <option value="" disabled selected>Select your champion</option>
                            <?php foreach ($hero as $row) :?>
@@ -52,7 +52,7 @@
                   <hr>
                   <center> ITEM </center>
 
-          <div class="radio">
+          <!-- <div class="radio">
             <label><input type="radio" name="item_type" value="*" checked> ALL </label> &nbsp;
             <label><input type="radio" name="item_type" value="ATTACK" > Attack </label> &nbsp;
             <label><input type="radio" name="item_type" value="MAGIC" > Magic </label> &nbsp;
@@ -60,7 +60,7 @@
             <label><input type="radio" name="item_type" value="MOVEMENT" > Movement </label> &nbsp;
             <label><input type="radio" name="item_type" value="JUNGLE" > Jungle </label> &nbsp;
             <label><input type="radio" name="item_type" value="BASIC" > Basic </label> &nbsp;
-          </div>
+          </div> -->
 
             <?php $x = 1; while ( $x <= 6) {;?>
 
@@ -84,6 +84,7 @@
                       </select>
                     <p>
 
+        <b>  <span class="glyphicon glyphicon-bitcoin"></span> &nbsp; TOTAL COST : <span id="cost">0</span> GOLD </b>
     
 		</div>
 
@@ -110,8 +111,48 @@
 
          <hr>
 
-        <center>TALENT</center><p></p>
+        <center>TALENT </center>
+        <center><p><small>[DEFAULT 3 POINT FOR EACH TALENT SELECTED ]</small></p></center>
 
+        <div class="row" style="text-align:center;">
+          <center><small class="label label-info"> TIER 1 </small> </center><p></p>
+            <div class="col-md-4">
+              <p id="talent_name_t1"></p>
+                   <label><input type="radio" id="talent_id_1" name="talent_tier_1" ></label> &nbsp;
+            </div>
+
+            <div class="col-md-4">
+              <p id="talent_name_t2"></p>
+                  <label><input type="radio" id="talent_id_2" name="talent_tier_1" ></label> &nbsp;
+            </div>
+
+            <div class="col-md-4">
+              <p id="talent_name_t3"></p>
+                 <label><input type="radio" id="talent_id_3" name="talent_tier_1"  ></label> &nbsp;
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row" style="text-align:center;">
+          <center><small class="label label-info"> TIER 2 </small> </center><p></p>
+            <div class="col-md-4">
+              <p id="talent_name_t4"></p>
+                  <label><input type="radio" id="talent_id_4" name="talent_tier_2" ></label> &nbsp;
+            </div>
+
+            <div class="col-md-4">
+              <p id="talent_name_t5"></p>
+                 <label><input type="radio" id="talent_id_5" name="talent_tier_2" ></label> &nbsp;
+            </div>
+
+            <div class="col-md-4">
+              <p id="talent_name_t6"></p>
+                <label><input type="radio" id="talent_id_6" name="talent_tier_2" ></label> &nbsp;
+            </div>
+
+        </div>
 
 
     </div>

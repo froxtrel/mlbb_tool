@@ -45,6 +45,31 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
     this.em_attack = 0
     this.em_level = 0
 
+    //talent stat
+    this.talent_armor = 0
+    this.talent_armor_per = 0
+    this.talent_attack_speed = 0
+    this.talent_battle_spell = 0
+    this.talent_cd_reduction = 0
+    this.talent_crit_chance = 0
+    this.talent_crit_dmg = 0
+    this.talent_dmg_to_monster = 0
+    this.talent_healing_effect = 0
+    this.talent_hp = 0
+    this.talent_hp_regen = 0
+    this.talent_lifesteal = 0
+    this.talent_magic_armor = 0
+    this.talent_magic_armor_per = 0
+    this.talent_magic_pen_flat = 0
+    this.talent_magic_power = 0
+    this.talent_magic_power_per = 0
+    this.talent_mana = 0
+    this.talent_mana_regen = 0
+    this.talent_move_speed_per = 0
+    this.talent_physical_attack = 0
+    this.talent_physical_pen_flat = 0
+    this.talent_spell_vamp = 0
+
     //limit
     this.max_cdr = 40 //%
     this.max_movespeed = 450
@@ -61,8 +86,10 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
     this.hp_regen_growth = 0
     this.magic_armor_growth = 0
 
+    //misc
     this.level = 0
     this.val = 0
+    this.total_cost = 0
 
     //SETTER
 
@@ -561,6 +588,198 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
         return this.max_atk_speed;
     }
 
+    this.setTotal_cost = function(total_cost)
+    {
+        this.total_cost = total_cost;
+    }
+    this.getTotal_cost = function()
+    {
+        return this.total_cost;
+    }
+    this.setTalent_armor = function(talent_armor)
+    {
+        this.talent_armor = talent_armor;
+    }
+    this.getTalent_armor = function()
+    {
+        return this.talent_armor;
+    }
+    this.setTalent_armor_per = function(talent_armor_per)
+    {
+        this.talent_armor_per = talent_armor_per;
+    }
+    this.getTalent_armor_per = function()
+    {
+        return this.talent_armor_per;
+    }
+    this.setTalent_attack_speed = function(talent_attack_speed)
+    {
+        this.talent_attack_speed = talent_attack_speed;
+    }
+    this.getTalent_attack_speed = function()
+    {
+        return this.talent_attack_speed;
+    }
+    this.setTalent_battle_spell = function(talent_battle_spell)
+    {
+        this.talent_battle_spell = talent_battle_spell;
+    }
+    this.getTalent_battle_spell = function()
+    {
+        return this.talent_battle_spell;
+    }
+    this.setTalent_cd_reduction = function(talent_cd_reduction)
+    {
+        this.talent_cd_reduction = talent_cd_reduction;
+    }
+    this.getTalent_cd_reduction = function()
+    {
+        return this.talent_cd_reduction;
+    }
+    this.setTalent_crit_chance = function(talent_crit_chance)
+    {
+        this.talent_crit_chance = talent_crit_chance;
+    }
+    this.getTalent_crit_chance = function()
+    {
+        return this.talent_crit_chance;
+    }
+    this.setTalent_crit_dmg = function(talent_crit_dmg)
+    {
+        this.talent_crit_dmg = talent_crit_dmg;
+    }
+    this.getTalent_crit_dmg = function()
+    {
+        return this.talent_crit_dmg;
+    }
+    this.setTalent_dmg_to_monster = function(talent_dmg_to_monster)
+    {
+        this.talent_dmg_to_monster = talent_dmg_to_monster;
+    }
+    this.getTalent_dmg_to_monster = function()
+    {
+        return this.talent_dmg_to_monster;
+    }
+    this.setTalent_healing_effect = function(talent_healing_effect)
+    {
+        this.talent_healing_effect = talent_healing_effect;
+    }
+    this.getTalent_healing_effect = function()
+    {
+        return this.talent_healing_effect;
+    }
+    this.setTalent_hp = function(talent_hp)
+    {
+        this.talent_hp = talent_hp;
+    }
+    this.getTalent_hp = function()
+    {
+        return this.talent_hp;
+    }
+    this.setTalent_hp_regen = function(talent_hp_regen)
+    {
+        this.talent_hp_regen = talent_hp_regen;
+    }
+    this.getTalent_hp_regen = function()
+    {
+        return this.talent_hp_regen;
+    }
+    this.setTalent_lifesteal = function(talent_lifesteal)
+    {
+        this.talent_lifesteal = talent_lifesteal;
+    }
+    this.getTalent_lifesteal = function()
+    {
+        return this.talent_lifesteal;
+    }
+    this.setTalent_magic_armor = function(talent_magic_armor)
+    {
+        this.talent_magic_armor = talent_magic_armor;
+    }
+    this.getTalent_magic_armor = function()
+    {
+        return this.talent_magic_armor;
+    }
+    this.setTalent_magic_armor_per = function(talent_magic_armor_per)
+    {
+        this.talent_magic_armor_per = talent_magic_armor_per;
+    }
+    this.getTalent_magic_armor_per = function()
+    {
+        return this.talent_magic_armor_per;
+    }
+    this.setTalent_magic_pen_flat = function(talent_magic_pen_flat)
+    {
+        this.talent_magic_pen_flat = talent_magic_pen_flat;
+    }
+    this.getTalent_magic_pen_flat = function()
+    {
+        return this.talent_magic_pen_flat;
+    }
+    this.setTalent_magic_power = function(talent_magic_power)
+    {
+        this.talent_magic_power = talent_magic_power;
+    }
+    this.getTalent_magic_power = function()
+    {
+        return this.talent_magic_power;
+    }
+    this.setTalent_magic_power_per = function(talent_magic_power_per)
+    {
+        this.talent_magic_power_per = talent_magic_power_per;
+    }
+    this.getTalent_magic_power_per = function()
+    {
+        return this.talent_magic_power_per;
+    }
+    this.setTalent_mana = function(talent_mana)
+    {
+        this.talent_mana = talent_mana;
+    }
+    this.getTalent_mana = function()
+    {
+        return this.talent_mana;
+    }
+    this.setTalent_mana_regen = function(talent_mana_regen)
+    {
+        this.talent_mana_regen = talent_mana_regen;
+    }
+    this.getTalent_mana_regen = function()
+    {
+        return this.talent_mana_regen;
+    }
+    this.setTalent_move_speed_per = function(talent_move_speed_per)
+    {
+        this.talent_move_speed_per = talent_move_speed_per;
+    }
+    this.getTalent_move_speed_per = function()
+    {
+        return this.talent_move_speed_per;
+    }
+    this.setTalent_physical_attack = function(talent_physical_attack)
+    {
+        this.talent_physical_attack = talent_physical_attack;
+    }
+    this.getTalent_physical_attack = function()
+    {
+        return this.talent_physical_attack;
+    }
+    this.setTalent_physical_pen_flat = function(talent_physical_pen_flat)
+    {
+        this.talent_physical_pen_flat = talent_physical_pen_flat;
+    }
+    this.getTalent_physical_pen_flat = function()
+    {
+        return this.talent_physical_pen_flat;
+    }
+    this.setTalent_spell_vamp = function(talent_spell_vamp)
+    {
+        this.talent_spell_vamp = talent_spell_vamp;
+    }
+    this.getTalent_spell_vamp = function()
+    {
+        return this.talent_spell_vamp;
+    }
 
-
+    
 }

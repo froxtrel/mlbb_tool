@@ -15,6 +15,7 @@ class Simulations extends BP_Controller
         $this->load->model('Hero');
         $this->load->model('Item');
         $this->load->model('Emblem');
+        $this->load->model('Talent');
     }
 
     public
@@ -47,6 +48,18 @@ class Simulations extends BP_Controller
     {   
         $emblem_info = $this->Emblem->get_emblem_info_by_id($id);
         echo $JSON = json_encode($emblem_info);
+    }
+
+    function get_talent_stats($id)
+    {
+        $talent_info = $this->Talent->get_talent_info_by_id($id);
+        echo $JSON = json_encode($talent_info);
+    }
+
+    function get_talent($id)
+    {
+        $talent = $this->Talent->get_talent($id);
+        echo $JSON = json_encode($talent);
     }
 
     
