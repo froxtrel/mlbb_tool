@@ -27,6 +27,8 @@ class Simulations extends BP_Controller
         $data['item'] = $this->Item->get_item_name();
         $data['potion'] = $this->Item->get_all_potion();
         $data['emblem'] = $this->Emblem->get_emblem_id_name_photo();
+        $data['talent_tier_1'] =  $this->Talent->get_talent_info_by_tier(1);
+        $data['talent_tier_2'] =  $this->Talent->get_talent_info_by_tier(2);
         $this->build_content($data);
         $this->render_page();
     }
@@ -50,15 +52,9 @@ class Simulations extends BP_Controller
         echo $JSON = json_encode($emblem_info);
     }
 
-    function get_talent_stats($id)
+    function get_talent_info($id)
     {
-        $talent_info = $this->Talent->get_talent_info_by_id($id);
-        echo $JSON = json_encode($talent_info);
-    }
-
-    function get_talent($id)
-    {
-        $talent = $this->Talent->get_talent($id);
+        $talent = $this->Talent->get_talent_info_by_id($id);
         echo $JSON = json_encode($talent);
     }
 

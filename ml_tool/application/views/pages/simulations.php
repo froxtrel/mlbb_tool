@@ -3,7 +3,7 @@
 	 <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
    <br><br>
    <div class="alert alert-warning">
-     <strong>TODO :</strong> Add talent slot
+     <strong>TODO :</strong> FIX : AGILITY,SWIFT, TALENT
    </div>
 
     <ul class="nav nav-tabs">
@@ -111,48 +111,22 @@
 
          <hr>
 
-        <center>TALENT </center>
-        <center><p><small>[DEFAULT 3 POINT FOR EACH TALENT SELECTED ]</small></p></center>
+        <center>TALENT </center><p></p>
 
-        <div class="row" style="text-align:center;">
-          <center><small class="label label-info"> TIER 1 </small> </center><p></p>
-            <div class="col-md-4">
-              <p id="talent_name_t1"></p>
-                   <label><input type="radio" id="talent_id_1" name="talent_tier_1" ></label> &nbsp;
-            </div>
-
-            <div class="col-md-4">
-              <p id="talent_name_t2"></p>
-                  <label><input type="radio" id="talent_id_2" name="talent_tier_1" ></label> &nbsp;
-            </div>
-
-            <div class="col-md-4">
-              <p id="talent_name_t3"></p>
-                 <label><input type="radio" id="talent_id_3" name="talent_tier_1"  ></label> &nbsp;
-            </div>
-
-        </div>
-
-        <br>
-
-        <div class="row" style="text-align:center;">
-          <center><small class="label label-info"> TIER 2 </small> </center><p></p>
-            <div class="col-md-4">
-              <p id="talent_name_t4"></p>
-                  <label><input type="radio" id="talent_id_4" name="talent_tier_2" ></label> &nbsp;
-            </div>
-
-            <div class="col-md-4">
-              <p id="talent_name_t5"></p>
-                 <label><input type="radio" id="talent_id_5" name="talent_tier_2" ></label> &nbsp;
-            </div>
-
-            <div class="col-md-4">
-              <p id="talent_name_t6"></p>
-                <label><input type="radio" id="talent_id_6" name="talent_tier_2" ></label> &nbsp;
-            </div>
-
-        </div>
+                   <select class=" slot form-control" id="talent_tier_1" name="talent_tier_1" required>
+                        <option value="10" disabled selected>Select your talent ( TIER 1 ) </option>
+                           <?php foreach ($talent_tier_1 as $row) :?>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
+                           <?php endforeach;?>
+                      </select>
+                    <p>
+                    <select class=" slot form-control" id="talent_tier_2" name="talent_tier_2" required>
+                        <option value="10" disabled selected>Select your talent ( TIER 2 ) </option>
+                           <?php foreach ($talent_tier_2 as $row) :?>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
+                           <?php endforeach;?>
+                      </select>
+                    <p>
 
 
     </div>

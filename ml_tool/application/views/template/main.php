@@ -88,7 +88,7 @@
 
   <!-- scripts concatenated and minified via ant build script-->
   <script src="<?php echo base_url()?>js/plugins.js"></script>
-  <script src="<?php echo base_url()?>js/champion.js"></script>
+  <!-- <script src="<?php echo base_url()?>js/champion.js"></script> -->
   <script src="<?php echo base_url()?>js/main.js"></script>
   <!-- end scripts-->
 
