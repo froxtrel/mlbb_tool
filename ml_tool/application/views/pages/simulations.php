@@ -3,7 +3,7 @@
 	 <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
    <br><br>
    <div class="alert alert-warning">
-     <strong>TODO :</strong> FIX : AGILITY,SWIFT, TALENT
+     <strong>TODO :</strong> 
    </div>
 
     <ul class="nav nav-tabs">
@@ -36,7 +36,7 @@
                   <select class="form-control" id="hero" name="hero" required>
                         <option value="" disabled selected>Select your champion</option>
                            <?php foreach ($hero as $row) :?>
-                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['HERO_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['HERO_NAME'];?> </b></option>
+                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['HERO_PHOTO'];?>"> <?=$row['HERO_ROLE'];?> : <b> <?=$row['HERO_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
@@ -68,7 +68,7 @@
                      <select  class="slot form-control" id="slot<?=$x;?>" name="slot<?=$x;?>" required>
                         <option value="95" disabled selected>Select item slot <?=$x;?> </option>
                            <?php foreach ($item as $row) :?>
-                              <option value="<?=$row['ID'];?>" data-image="<?=$row['ITEM_PHOTO'];?>"> ITEM <?=$x;?> : <?=$row['ITEM_NAME'];?> </option>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['ITEM_PHOTO'];?>"> <?=$row['ITEM_CATEGORY'];?> : <?=$row['ITEM_NAME'];?> </option>
                            <?php endforeach;?>
                       </select>
                     <p>
@@ -84,7 +84,7 @@
                       </select>
                     <p>
 
-        <b>  <span class="glyphicon glyphicon-bitcoin"></span> &nbsp; TOTAL COST : <span id="cost">0</span> GOLD </b>
+        <b>  TOTAL COST : <span id="cost">0</span> GOLD </b>
     
 		</div>
 
@@ -114,20 +114,38 @@
         <center>TALENT </center><p></p>
 
                    <select class=" slot form-control" id="talent_tier_1" name="talent_tier_1" required>
-                        <option value="10" disabled selected>Select your talent ( TIER 1 ) </option>
+                        <option value="55" disabled selected>Select your talent ( TIER 1 ) </option>
                            <?php foreach ($talent_tier_1 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
                     <select class=" slot form-control" id="talent_tier_2" name="talent_tier_2" required>
-                        <option value="10" disabled selected>Select your talent ( TIER 2 ) </option>
+                        <option value="55" disabled selected>Select your talent ( TIER 2 ) </option>
                            <?php foreach ($talent_tier_2 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
+                     <select class=" slot form-control" id="talent_tier_3" name="talent_tier_3" required>
+                        <option value="55" disabled selected>Select your talent ( TIER 3 ) </option>
+                         <!--   <?php foreach ($talent_tier_3 as $row) :?>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
+                           <?php endforeach;?> -->
+                      </select>
+                    <p>
+        <hr>
 
+        <center>ABILITY BUFF </center><p></p>
+
+                 
+                    <select class=" slot form-control" id="jungle_buff" name="jungle_buff" required>
+                        <option value="55" disabled selected>Select your ability buff </option>
+                          <!--  <?php foreach ($talent_tier_1 as $row) :?>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
+                           <?php endforeach;?> -->
+                      </select>
+                    <p>
 
     </div>
 	</div>  
@@ -202,10 +220,21 @@
               <td><span id="crit_reduction">0</span></td>
               <td>RESILIENCE</td>
               <td><span id="resilience">0</span></td>
-              <td>RESERVED</td>
-              <td><span id="crit_reduction">0</span></td>
-              <td>RESERVED</td>
-              <td><span id="resilience">0</span></td>
+              <td>DMG TO MONSTER</td>
+              <td><span id="dmg_to_monster">0</span></td>
+              <td>CRIT DAMAGE</td>
+              <td><span id="crit_damage">0</span></td>
+            </tr>
+
+            <tr>
+              <td>HEALING EFFECTS</td>
+              <td><span id="healing_effects">0</span></td>
+              <td>BATTLE SPELL</td>
+              <td><span id="battle_spell">0</span></td>
+              <td>MAGIC PEN %</td>
+              <td><span id="magic_pen_per">0</span></td>
+              <td>PHYSICAL PEN %</td>
+              <td><span id="physical_pen_per">0</span></td>
             </tr>
            
           </tbody>

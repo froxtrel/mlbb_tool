@@ -92,7 +92,7 @@ function add_emblem(hero, emblem_id)
             hero.setEm_magic_power(f(r["0"].EMBLEM_MAGIC_POWER_GR) * hero.getEm_level())
             hero.setEm_mana(f(r["0"].EMBLEM_MANA_GR) * hero.getEm_level())
             hero.setEm_mana_regen(f(r["0"].EMBLEM_MANA_REGEN_GR) * hero.getEm_level())
-            hero.setEm_move_speed(f(r["0"].EMBLEM_MOVE_SPEED_GR) * hero.getEm_level())
+            hero.setEm_move_speed_per(f(( r["0"].EMBLEM_MOVE_SPEED_GR) * hero.getEm_level()/100))
             hero.setEm_attack(f(r["0"].EMBLEM_PHYSICAL_ATTACK_GR) * hero.getEm_level())
             hero.setEm_physical_pen(f(r["0"].EMBLEM_PHYSICAL_PEN_GR) * hero.getEm_level())
             hero.setEm_physical_pen_flat(f(r["0"].EMBLEM_PHYSICAL_PEN_FLAT_GR) * hero.getEm_level())
@@ -163,7 +163,6 @@ function add_level(hero, lvl)
           hero.setHpRegenGrowth((i(hero.getHpRegen()) + i(hero.getHpRegenGrowth()) *i(lvl)))
           hero.setManaRegenGrowth((i(hero.getManaRegen()) + i(hero.getManaRegenGrowth()) *i(lvl)))
           hero.setManaGrowth((i(hero.getMana()) + i(hero.getManaGrowth()) * i(lvl)))
-
 }
 
 function show_stat(hero)
@@ -187,31 +186,33 @@ function show_stat(hero)
 
           set('#hp', c(hero.getHp() + hero.getEm_hp() + hero.getTalent_hp()))
           set('#mana', c(hero.getMana() + hero.getEm_mana() + hero.getTalent_mana()))
-          set('#armor', c(hero.getArmor() + hero.getEm_armor() + hero.getTalent_armor()))
-          set('#physical_pen', c(hero.getPhysicalPen() + hero.getEm_physical_pen() + hero.getTalent_physical_pen_flat()))
+          set('#armor', c(hero.getArmor() + hero.getEm_armor() + hero.getTalent_armor() + c(i(hero.getArmor()) * f(hero.getTalent_armor_per()/100))))
+          set('#physical_pen', c(hero.getPhysicalPen() + hero.getEm_physical_pen_flat() + hero.getTalent_physical_pen_flat()))
           set('#lifesteal', c(hero.getLifesteal() + hero.getEm_lifesteal() + hero.getTalent_lifesteal()))
           set('#hp_regen', c(hero.getHpRegen() + hero.getEm_hp_regen() + hero.getTalent_hp_regen()))
           set('#mana_regen', c(hero.getManaRegen() + hero.getEm_mana_regen() + hero.getTalent_mana_regen()))
-          set('#magic_power', c(hero.getMagicPower() + hero.getEm_magic_power() + hero.getTalent_magic_power()))
-          set('#magic_resistance', c(hero.getMagicResistance() + hero.getEm_magic_armor() + hero.getTalent_magic_armor()))
-          set('#magic_pen', c(hero.getMagicPenFlat() + hero.getEm_magic_pen_per() + hero.getTalent_magic_pen_flat()))
+          set('#magic_power', c(hero.getMagicPower() + hero.getEm_magic_power() + c(i(hero.getMagicPower()) * f(hero.getTalent_magic_power_per()/100))))
+          set('#magic_resistance', c(hero.getMagicResistance() + hero.getEm_magic_armor() + c(i(hero.getMagicResistance()) * f(hero.getTalent_magic_armor_per()/100))))
+          set('#magic_pen', c(hero.getMagicPenFlat() + hero.getEm_magic_pen_flat() + hero.getTalent_magic_pen_flat()))
           set('#spell_vamp', c(hero.getSpellVamp() + hero.getEm_spell_vamp() + hero.getTalent_spell_vamp()))
-          set('#move_speed', f(hero.getMoveSpeed() + (f(hero.getMoveSpeed() * (hero.getMoveSpeedPer() / 100) + hero.getTalent_attack_speed()))))
+          set('#move_speed', f(hero.getMoveSpeed()) + c(hero.getMoveSpeed() * (hero.getEm_move_speed_per() + hero.getTalent_move_speed_per())))
           set('#cooldown_reduction', c(hero.getCdr() + hero.getEm_cdr() + hero.getTalent_cd_reduction()))
-          set('#attack_speed', f(hero.getAttackSpeed() + f(hero.getEm_atk_speed() /100) + f(hero.getTalent_attack_speed())))
+          set('#attack_speed', f(hero.getAttackSpeed() + f(hero.getEm_atk_speed() /100) + f((hero.getTalent_attack_speed()/100))))
           set('#crit_chance', c(hero.getCritChance() + hero.getEm_crit_chance() + hero.getTalent_crit_chance()))
           set('#attack', c(hero.getAttack() + hero.getEm_attack() + hero.getTalent_physical_attack()))
           set('#crit_reduction', c(hero.getCritReduction()))
           set('#resilience', c(hero.getResilience()))
           set('#cost', i(hero.getTotal_cost()))
+          set('#crit_damage',i(hero.getTalent_crit_dmg()))
+          set('#healing_effects',i(hero.getTalent_healing_effect()))
+          set('#battle_spell',i(hero.getTalent_battle_spell()))
+
+          // console.log(hero.getTalent_magic_power_per())
 
 }
 
 function add_talent_t1(hero, talent_t1)
-{   
-    if(talent_t1 == 10 ) {
-      talent_t1 = 55
-    }
+{ 
 
     $.ajax(
     {
@@ -220,19 +221,20 @@ function add_talent_t1(hero, talent_t1)
         dataType: 'json',
         success: function(r)
         {
-            console.log(r)
-            hero.setTalent_hp(i(r["0"].TALENT_HP_GR * 3))
-            hero.setTalent_armor(i(r["0"].TALENT_ARMOR_GR * 3))
-            hero.setTalent_magic_armor(i(r["0"].TALENT_MAGIC_ARMOR_GR * 3))
-            hero.setTalent_mana(i(r["0"].TALENT_MANA_GR * 3))
-            hero.setTalent_mana_regen(i(r["0"].TALENT_MANA_REGEN_GR * 3))
-            hero.setTalent_physical_attack(i(r["0"].TALENT_PHYSICAL_ATTACK_GR * 3))
-            hero.setTalent_dmg_to_monster(i(r["0"].TALENT_DMG_TO_MONSTER_GR * 3))
-            hero.setTalent_lifesteal(i(r["0"].TALENT_LIFESTEAL_GR * 3))
-            hero.setTalent_cd_reduction(i(r["0"].TALENT_CD_REDUCTION_GR * 3))
+            // console.log(r)
+
+            hero.setTalent_hp(i(r["0"].TALENT_HP_GR * 3) + i(hero.getTalent_hp()))
+            hero.setTalent_armor(i(r["0"].TALENT_ARMOR_GR * 3 + i(hero.getTalent_armor())))
+            hero.setTalent_magic_armor(i(r["0"].TALENT_MAGIC_ARMOR_GR * 3 + i(hero.getTalent_magic_armor())))
+            hero.setTalent_mana(i(r["0"].TALENT_MANA_GR * 3 + i(hero.getTalent_mana())))
+            hero.setTalent_mana_regen(i(r["0"].TALENT_MANA_REGEN_GR * 3 + i(hero.getTalent_mana_regen())))
+            hero.setTalent_physical_attack(i(r["0"].TALENT_PHYSICAL_ATTACK_GR * 3 + i(hero.getTalent_physical_attack())))
+            hero.setTalent_dmg_to_monster(i(r["0"].TALENT_DMG_TO_MONSTER_GR * 3 + i(hero.getTalent_dmg_to_monster())))
+            hero.setTalent_lifesteal(i(r["0"].TALENT_LIFESTEAL_GR * 3 + i(hero.getTalent_lifesteal())))
+            hero.setTalent_cd_reduction(i(r["0"].TALENT_CD_REDUCTION_GR * 3 + i(hero.getTalent_cd_reduction())))
             hero.setTalent_move_speed_per(f(i(r["0"].TALENT_MOVE_SPEED_PER_GR * 3)/100))
-            hero.setTalent_magic_power(i(r["0"].TALENT_MAGIC_POWER_GR * 3))
-            hero.setTalent_crit_chance(f(i(r["0"].TALENT_CRIT_CHANCE_GR * 3)/100))
+            hero.setTalent_magic_power(i(r["0"].TALENT_MAGIC_POWER_GR * 3) + i(hero.getTalent_magic_power()))
+            hero.setTalent_crit_chance(f(r["0"].TALENT_CRIT_CHANCE_GR * 3) + i(hero.getTalent_crit_chance()))
 
             show_stat(hero);
 
@@ -243,6 +245,50 @@ function add_talent_t1(hero, talent_t1)
         }
     })
 }
+
+
+function add_talent_t2(hero, talent_t2)
+{   
+
+    $.ajax(
+    {
+        url: 'http://localhost/ml_tool/simulations/get_talent_info/' + talent_t2,
+        method: 'POST',
+        dataType: 'json',
+        success: function(r)
+        {   
+            // console.log(r)
+
+            hero.setTalent_crit_dmg(i(r["0"].TALENT_CRIT_DMG_GR * 3) + i(hero.getTalent_crit_dmg()))
+            hero.setTalent_cd_reduction(i(r["0"].TALENT_CD_REDUCTION_GR * 3) + i(hero.getTalent_cd_reduction()))
+            hero.setTalent_attack_speed(i(r["0"].TALENT_ATTACK_SPEED_GR * 3))
+            hero.setTalent_healing_effect(i(r["0"].TALENT_HEALING_EFFECT_GR * 3) + i(hero.getTalent_healing_effect()))
+            hero.setTalent_physical_pen_flat(i(r["0"].TALENT_PHYSICAL_PEN_FLAT_GR * 3) + i(hero.getTalent_physical_pen_flat()))
+            hero.setTalent_magic_pen_flat(i(r["0"].TALENT_MAGIC_PEN_FLAT_GR * 3) + i(hero.getTalent_magic_pen_flat()))
+            hero.setTalent_mana_regen(i(r["0"].TALENT_MANA_REGEN_GR * 3) + i(hero.getTalent_mana_regen()))
+            hero.setTalent_hp_regen(i(r["0"].TALENT_HP_REGEN_GR * 3) + i(hero.getTalent_hp_regen()))
+            hero.setTalent_hp(i(r["0"].TALENT_HP_GR * 3) + i(hero.getTalent_hp()))
+            hero.setTalent_attack_speed(f(r["0"].TALENT_ATTACK_SPEED_GR * 3))
+            hero.setTalent_spell_vamp(i(r["0"].TALENT_SPELL_VAMP_GR * 3) + i(hero.getTalent_spell_vamp()))
+            hero.setTalent_crit_chance(i(r["0"].TALENT_CRIT_CHANCE_GR * 3) + i(hero.getTalent_crit_chance()))
+            hero.setTalent_battle_spell(i(r["0"].TALENT_BATTLE_SPELL_CDR_GR * 3) + i(hero.getTalent_battle_spell()))
+            hero.setTalent_armor_per(i(r["0"].TALENT_ARMOR_PER_GR * 3) + i(hero.getTalent_armor_per()))
+            hero.setTalent_magic_armor_per(i(r["0"].TALENT_MAGIC_ARMOR_PER_GR * 3) + i(hero.getTalent_magic_power_per()))
+            hero.setTalent_physical_attack(i(r["0"].TALENT_PHYSICAL_ATTACK_GR * 3 + i(hero.getTalent_physical_attack())))
+            hero.setTalent_magic_power_per(i(r["0"].TALENT_MAGIC_POWER_PER_GR * 3))
+            hero.setTalent_magic_power_per(i(r["0"].TALENT_MAGIC_POWER_PER_GR * 3))
+
+            show_stat(hero);
+
+        },
+        error: function(err)
+        {
+            return err
+        }
+    })
+}
+
+
 
 function getChampionStat(id, 
   level, 
@@ -301,7 +347,7 @@ function getChampionStat(id,
             add_potion(hero, potion)
             add_emblem(hero, emblem_id)
             add_talent_t1(hero,talent_t1)
-            // add_talent_t2(hero,talent_t2)
+            add_talent_t2(hero,talent_t2)
 
         },
         error: function(err)
@@ -349,7 +395,6 @@ $("#hero,#level,.slot,input[name='talent_tier_1'],input[name='talent_tier_2']").
       talent_t1, 
       talent_t2
       )
-
 });
 
 
@@ -1135,7 +1180,6 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
     {
         return this.talent_spell_vamp;
     }
-
-    
+   
 }
 
