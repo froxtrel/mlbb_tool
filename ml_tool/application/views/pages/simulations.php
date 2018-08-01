@@ -151,7 +151,86 @@
 	</div>  
 
   <div class="row">
-          <div class="col-md-12">
+
+    <div class="col-md-12">
+      <hr>
+
+        <center>CHAMPION SKILL (LEVEL 1) </center>
+        <p></p>
+         <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table" class="table-striped">
+          <thead>
+            <tr>
+              <th>PHOTO</th>
+              <th>SKILL TYPE</th>
+              <th>SKILL NAME</th>
+              <th>MAGIC DAMAGE</th>
+              <th>PHYSICAL DAMAGE</th>
+              <th>COOLDOWN</th>
+              <th>MANA</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+               <td><img width="50px" height="50px" id="photo_1" class="img-circle"></td>
+               <td id="type_1"></td>
+               <td id="skill_1"></td>
+               <td id="magic_dmg_1">0</td>
+               <td id="physical_dmg_1">0</td>
+               <td id="cooldown_1">0</td>
+               <td id="mana_1">0</td>
+             </tr>
+              <tr>
+               <td><img width="50px" height="50px" id="photo_2" class="img-circle"></td>
+               <td id="type_2"></td>
+               <td id="skill_2"></td>
+               <td id="magic_dmg_2">0</td>
+               <td id="physical_dmg_2">0</td>
+               <td id="cooldown_2">0</td>
+               <td id="mana_2">0</td>
+             </tr>
+              <tr>
+               <td><img width="50px" height="50px" id="photo_3" class="img-circle"></td>
+               <td id="type_3"></td>
+               <td id="skill_3"></td>
+               <td id="magic_dmg_3">0</td>
+               <td id="physical_dmg_3">0</td>
+               <td id="cooldown_3">0</td>
+               <td id="mana_3">0</td>
+             </tr>
+              <tr>
+               <td><img width="50px" height="50px" id="photo_4" class="img-circle"></td>
+               <td id="type_4"></td>
+               <td id="skill_4"></td>
+               <td id="magic_dmg_4">0</td>
+               <td id="physical_dmg_4">0</td>
+               <td id="cooldown_4">0</td>
+               <td id="mana_4">0</td>
+             </tr>
+             <tr>
+               <td></td>
+               <td></td>
+               <td >TOTAL DAMAGE DONE : </td>
+               <td id="magic_dmg_done">0</td>
+               <td id="physical_dmg_done">0</td>
+               <td ></td>
+               <td ></td>
+             </tr>
+          </tbody>
+        </table>
+
+        <br>
+
+         <div class="alert alert-info">
+           <strong>ADDITIONAL INFO :</strong> 
+           <br>
+           <p id="add_info_passive"></p>
+           <p id="add_info_skill_1"></p>
+           <p id="add_info_skill_2"></p>
+           <p id="add_info_skill_3"></p>
+         </div>
+    </div>
+
+    <div class="col-md-12">
       <hr>
 
         <center>CHAMPION ATTRIBUTES</center>
