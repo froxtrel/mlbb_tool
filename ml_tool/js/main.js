@@ -158,10 +158,10 @@ function add_item(hero, slot,role)
 
 function add_level(hero, lvl)
 {               
-          hero.setAttackGrowth((i(hero.getAttack()) + i(hero.getAttackGrowth()) * i(lvl)))
-          hero.setAttackSpeedGrowth((parseFloat(hero.getAttackSpeed() / 100) + parseFloat((i(hero.getAttackSpeedGrowth()) *i(lvl)) / 1000)))
-          hero.setArmorGrowth((i(hero.getArmor()) + i(hero.getArmorGrowth()) *i(lvl)))
-          hero.setMagicArmorGrowth((i(hero.getMagicResistance()) + (i(hero.getMagicArmorGrowth()) *i(lvl))))
+          hero.setAttackGrowth(f(f(hero.getAttack()) + f(hero.getAttackGrowth()) * f(lvl)) + f(0.5))
+          hero.setAttackSpeedGrowth(f(f(hero.getAttackSpeed() / 100) + f(f((f(hero.getAttackSpeedGrowth())/1000) * f(lvl))) + f(0.005)))
+          hero.setArmorGrowth(f(f(hero.getArmor()) + f(hero.getArmorGrowth()) *f(lvl))+ f(0.5))
+          hero.setMagicArmorGrowth(f(f(hero.getMagicResistance()) + (f(hero.getMagicArmorGrowth()) *f(lvl))) + f(0.5))
           hero.setHpGrowth((i(hero.getHp()) + i(hero.getHpGrowth()) *i(lvl)))
           hero.setHpRegenGrowth((i(hero.getHpRegen()) + i(hero.getHpRegenGrowth()) *i(lvl)))
           hero.setManaRegenGrowth((i(hero.getManaRegen()) + i(hero.getManaRegenGrowth()) *i(lvl)))
@@ -213,38 +213,12 @@ function add_skill(hero, hero_id , role)
                hero.setSkill_mana_1(r["0"].SKILL_BASE_MANA_COST)
 
                //skill 1
-               switch(hero.getHero_name()) {
+               if(hero.getHero_name() == 'AKAI') {
 
-                  case 'AKAI':
-
+   
                           hero.setSkill_magic_damage_2(i(r["1"].SKILL_BASE_PHYSICAL_DAMAGE) 
                           + (f(hero.getTotal_physical_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
                           + (f(hero.getTotal_added_physical_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK))
-                          )
-
-                          $('#add_info_passive').html(
-                              '<b>PASSIVE</b> : EVERY TIME AKAI USED SKILL,AKAI WILL GAIN SHIELD THAT ABSORB <b>' + '  ' 
-                                +  (f(f(hero.getTotal_added_hp() * f(r[1].SKILL_PASSIVE_HP_ADDED_SHIELD)))) + '  ' + '</b>DMG'
-                            )
-
-                          $('#add_info_skill_2').html(
-                              '<b>BLENDER</b> : AKAI BASIC ATTACK ON MARKED TARGET DEAL <b>' + '  ' 
-                                +  (f(f(hero.getTotal_added_hp() * f(r[1].SKILL_PASSIVE_HP_EXTRA_DMG)))) + '  ' + '</b>EXTRA DMG'
-                            )
-
-                    break;
-
-                  default:
-
-                          hero.setSkill_physical_damage_2(i(r["1"].SKILL_BASE_PHYSICAL_DAMAGE) 
-                          + (f(hero.getTotal_physical_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
-                          + (f(hero.getTotal_added_physical_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK))
-                          )
-
-
-                        hero.setSkill_magic_damage_2(i(r["1"].SKILL_BASE_MAGIC_DAMAGE) 
-                          + (f(hero.getTotal_magic_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
-                          + (f(hero.getTotal_added_magic_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK))
                           )
 
                }
@@ -280,6 +254,46 @@ function add_skill(hero, hero_id , role)
 
                hero.setSkill_cooldown_4( r["3"].SKILL_BASE_COOLDOWN - (i(r["3"].SKILL_BASE_COOLDOWN) * f((hero.getTotal_cdr()/100))))
                hero.setSkill_mana_4(r["3"].SKILL_BASE_MANA_COST)
+
+
+
+              switch(hero.getHero_name()) {
+
+                  case 'AKAI':
+                     
+                          $('#add_info_passive').html(
+                              '<b>' + r[0].SKILL_NAME +'</b> : EVERY TIME AKAI USED SKILL,AKAI WILL GAIN SHIELD THAT ABSORB <b>' + '  ' 
+                                +  (f(f(hero.getTotal_added_hp() * f(r[1].SKILL_BONUS_HP_ADDED_SHIELD)))) + '  ' + '</b>DMG'
+                            )
+
+                          $('#add_info_skill_2').html(
+                              '<b>' + r[1].SKILL_NAME + '</b> : AKAI BASIC ATTACK ON MARKED TARGET DEAL <b>' + '  ' 
+                                +  (f(f(hero.getTotal_added_hp() * f(r[1].SKILL_BONUS_HP_EXTRA_DMG)))) + '  ' + '</b>EXTRA PHYSICAL DMG'
+                            )
+
+                          $('#add_info_skill_3').html(
+                              '<b>' + r[3].SKILL_NAME + '</b> : AKAI GAIN EXTRA MOVESPEED, <b>' + '  ' 
+                                +  f(f(hero.getTotal_added_movespeed()) + i(r[1].SKILL_BONUS_ADD_SPEED_FLAT))  + '  ' + '</b>IN TOTAL FOR 3.5 SEC'
+                            )
+
+                    break;
+
+                    case 'ALICE':
+                     
+                          $('#add_info_passive').html(
+                              '<b>' + r[0].SKILL_NAME +'</b> <br> : AFTER ABSORBING <b>12 BLOOD ORB</b>, ALICE GAIN EXTRA CDR <b>' + '  ' 
+                                +  (f(f(hero.getTotal_added_cdr() + f(r["0"].SKILL_BONUS_ADD_CDR)))) + '  ' + '</b>IN TOTAL' + 
+                               '<br>' 
+                                +'</b> : AFTER ABSORBING <b>30 BLOOD ORB</b>, ALICE GAIN EXTRA SPELL VAMP <b>' + '  ' 
+                                +  (f(f(hero.getTotal_added_spell_vamp() + f(r["0"].SKILL_BONUS_ADD_SPELL_VAMP)))) + '  ' + '</b>IN TOTAL' +
+                              '<br>' 
+                                +'</b> : AFTER ABSORBING <b>60 BLOOD ORB</b>, ALICE GAIN EXTRA MOVEMENT SPEED <b>' + '  ' 
+                                +  f(f(hero.getTotal_added_movespeed()) + i(r["0"].SKILL_BONUS_ADD_SPEED_FLAT)) + '  ' + '</b>IN TOTAL' 
+                            )
+
+                    break;
+
+               }
           
                show_stat(hero , role);
 
@@ -408,7 +422,9 @@ function show_stat(hero, role)
           hero.setTotal_magic_attack(c(hero.getMagicPower() + hero.getEm_magic_power() + c(i(hero.getMagicPower()) * f(hero.getTalent_magic_power_per()/100))))
           hero.setTotal_cdr(c(hero.getCdr() + hero.getEm_cdr() + hero.getTalent_cd_reduction()))
           hero.setTotal_added_hp(c(hero.getHp() + hero.getEm_hp() + hero.getTalent_hp()))
-
+          hero.setTotal_added_movespeed(f(hero.getMoveSpeed()) + c(hero.getMoveSpeed() * (hero.getEm_move_speed_per() + hero.getTalent_move_speed_per())))
+          hero.setTotal_added_cdr(c(hero.getCdr() + hero.getEm_cdr() + hero.getTalent_cd_reduction()))
+          hero.setTotal_added_spell_vamp(c(hero.getSpellVamp() + hero.getEm_spell_vamp() + hero.getTalent_spell_vamp()))
 
 }
 
@@ -745,6 +761,8 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
     //misc
     this.level = 0
     this.val = 0
+
+    //total
     this.total_cost = 0
     this.total_physical_attack = 0;
     this.total_magic_attack = 0;
@@ -756,6 +774,9 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
     this.total_added_cdr = 0;
     this.item_added_cdr = 0;
     this.total_added_hp = 0;
+    this.total_added_movespeed = 0;
+    this.total_added_cdr = 0;
+    this.total_added_spell_vamp = 0;
 
 
 
@@ -1158,6 +1179,13 @@ function Champion(hp, mana, armor, hp_regen, mana_regen, mag_armor, move_speed, 
 
 this.setTotal_added_hp = function(total_added_hp) { this.total_added_hp = total_added_hp; } 
 this.getTotal_added_hp = function() { return this.total_added_hp; } 
+this.setTotal_added_movespeed = function(total_added_movespeed) { this.total_added_movespeed = total_added_movespeed; } 
+this.getTotal_added_movespeed = function() { return this.total_added_movespeed; } 
+this.setTotal_added_cdr = function(total_added_cdr) { this.total_added_cdr = total_added_cdr; } 
+this.getTotal_added_cdr = function() { return this.total_added_cdr; } 
+this.setTotal_added_spell_vamp = function(total_added_spell_vamp) { this.total_added_spell_vamp = total_added_spell_vamp; } 
+this.getTotal_added_spell_vamp = function() { return this.total_added_spell_vamp; } 
+
 
    
 }
