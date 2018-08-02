@@ -47,6 +47,14 @@
                            <?php $x++; };?>
                       </select>
                     <p>
+                    <p>
+                     <select class="form-control" id="skin" name="skin" required>
+                        <option value="" disabled selected>Select your champion skin</option>
+                           <!-- <?php $x = 0; while ( $x <= 14) {;?>
+                            <option value="<?=$x;?>"> CHAMPION LEVEL : <?=$x + 1;?> </option>
+                           <?php $x++; };?> -->
+                      </select>
+                    <p>
 
                   <!--  <h3><b> <span class="glyphicon glyphicon-subscript"></span> ITEM </b></h3>  -->
                   <hr>
@@ -147,6 +155,16 @@
                       </select>
                     <p>
 
+         <center>BATTLE SPELL </center><p></p>
+
+                    <select class=" slot form-control" id="battle_spell" name="battle_spell" required>
+                        <option value="55" disabled selected>Select your battle spell </option>
+                          <!--  <?php foreach ($talent_tier_1 as $row) :?>
+                              <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
+                           <?php endforeach;?> -->
+                      </select>
+                    <p>
+
     </div>
 	</div>  
 
@@ -156,7 +174,47 @@
       <hr>
 
         <center>CHAMPION SKILL (LEVEL 1) </center>
-        <p></p>
+
+          <div class="row">
+
+              <div class="col-md-4">
+                <center><p>SKILL 1</p></center>
+                  <p>
+                       <select class="slot form-control" id="skill_level_1" name="skill_level_1" required>
+                          <option value="0" disabled selected>Select your skill 1 level</option>
+                              <?php $x = 0; while ( $x <= 5) {;?>
+                          <option value="<?=$x;?>"> SKILL LEVEL : <?=$x + 1;?> </option>
+                              <?php $x++; };?>
+                        </select>                
+                  <p>
+              </div>
+
+              <div class="col-md-4">
+                <center><p>SKILL 2</p></center>
+                  <p>
+                       <select class="slot form-control" id="skill_level_2" name="skill_level_2" required>
+                          <option value="0" disabled selected>Select your skill 2  level</option>
+                              <?php $x = 0; while ( $x <= 5) {;?>
+                          <option value="<?=$x;?>"> SKILL LEVEL : <?=$x + 1;?> </option>
+                              <?php $x++; };?>
+                        </select>                
+                  <p>
+              </div>
+
+              <div class="col-md-4">
+                <center><p>ULTIMATE</p></center>
+                  <p>
+                       <select class="slot form-control" id="skill_level_3" name="skill_level_3" required>
+                          <option value="0" disabled selected>Select your ultimate level</option>
+                             <?php $x = 0; while ( $x <= 2) {;?>
+                          <option value="<?=$x;?>"> ULTIMATE LEVEL : <?=$x + 1;?> </option>
+                              <?php $x++; };?>
+                        </select>                
+                  <p>
+              </div>
+
+          </div>
+         </p>
          <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table" class="table-striped">
           <thead>
             <tr>

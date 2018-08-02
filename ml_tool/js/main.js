@@ -83,7 +83,7 @@ function add_emblem(hero, emblem_id , role)
             hero.setEm_atk_speed(f(r["0"].EMBLEM_ATTACK_SPEED_GR) * hero.getEm_level())
             hero.setEm_cdr(f(r["0"].EMBLEM_CDR_GR) * hero.getEm_level())
             hero.setEm_crit_chance(f(r["0"].EMBLEM_CRIT_CHANCE_GR) * hero.getEm_level())
-            hero.setEm_hp(f(r["0"].EMBLEM_HP_GR) * hero.getEm_level())
+            hero.setEm_hp(f(f(r["0"].EMBLEM_HP_GR) * hero.getEm_level()) + 1)
             hero.setEm_hp_regen(f(r["0"].EMBLEM_HP_REGEN_GR) * hero.getEm_level())
             hero.setEm_lifesteal(f(r["0"].EMBLEM_LIFESTEAL_GR) * hero.getEm_level())
             hero.setEm_magic_armor(f(r["0"].EMBLEM_MAGIC_ARMOR_GR) * hero.getEm_level())
@@ -170,7 +170,7 @@ function add_level(hero, lvl)
          
 }
 
-function add_skill(hero, hero_id , role)
+function add_skill(hero, hero_id , role , skill_1_lvl , skill_2_lvl , skill_3_lvl)
 {
     $.ajax(
     {
@@ -199,7 +199,8 @@ function add_skill(hero, hero_id , role)
                $('#photo_3').attr('src',r[2].SKILL_PHOTO)
                $('#photo_4').attr('src',r[3].SKILL_PHOTO)
 
-               //passive
+               /////////////////////////////////PASSIVE////////////////////////////////////
+
                hero.setSkill_physical_damage_1(i(r["0"].SKILL_BASE_PHYSICAL_DAMAGE )
                   + (f(hero.getTotal_physical_attack()) * f(r["0"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
                   + (f(hero.getTotal_added_physical_attack()) * f(r["0"].SKILL_EXTRA_PHYSICAL_ATTACK))
@@ -212,48 +213,84 @@ function add_skill(hero, hero_id , role)
                hero.setSkill_cooldown_1(r["0"].SKILL_BASE_COOLDOWN)
                hero.setSkill_mana_1(r["0"].SKILL_BASE_MANA_COST)
 
-               //skill 1
-               if(hero.getHero_name() == 'AKAI') {
+               /////////////////////////////END PASSIVE//////////////////////////////////////
 
-   
-                          hero.setSkill_magic_damage_2(i(r["1"].SKILL_BASE_PHYSICAL_DAMAGE) 
-                          + (f(hero.getTotal_physical_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
-                          + (f(hero.getTotal_added_physical_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK))
+
+
+               //////////////////////////////SKILL1/////////////////////////////////////////
+
+               switch(hero.getHero_name()) {
+
+                    case 'AKAI':
+                              hero.setSkill_magic_damage_2(i(r["1"].SKILL_BASE_PHYSICAL_DAMAGE) 
+                              + (f(hero.getTotal_physical_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK)) 
+                              + (f(hero.getTotal_added_physical_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK)) 
+                              + (f(r["1"].SKILL_BASE_PHYSICAL_ATTACK_GR) * f(skill_1_lvl))
+                            )
+                        break;
+                
+                    default:
+
+                            hero.setSkill_physical_damage_2(i(r["1"].SKILL_BASE_PHYSICAL_DAMAGE)
+                            + (f(hero.getTotal_physical_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK)) 
+                            + (f(hero.getTotal_added_physical_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK)) 
+                            + (f(r["1"].SKILL_BASE_PHYSICAL_ATTACK_GR) * f(skill_1_lvl))
                           )
 
-               }
+                            hero.setSkill_magic_damage_2(i(r["1"].SKILL_BASE_MAGIC_DAMAGE) 
+                            + (f(hero.getTotal_magic_attack()) * f(r["1"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK)) 
+                            + (f(hero.getTotal_added_magic_attack()) * f(r["1"].SKILL_EXTRA_PHYSICAL_ATTACK)) 
+                            + (f(r["1"].SKILL_BASE_MAGIC_DAMAGE_GR) * f(skill_1_lvl))
+                          )
+                }
 
 
                hero.setSkill_cooldown_2( r["1"].SKILL_BASE_COOLDOWN - (i(r["1"].SKILL_BASE_COOLDOWN) * f((hero.getTotal_cdr()/100))))
                hero.setSkill_mana_2(r["1"].SKILL_BASE_MANA_COST)
 
-               // skill 2
+               ////////////////////////////////END SKILL 1//////////////////////////////////////
+
+
+               ////////////////////////////////SKIL2//////////////////////////////////////////
+
                hero.setSkill_physical_damage_3(i(r["2"].SKILL_BASE_PHYSICAL_DAMAGE)
                   + (f(hero.getTotal_physical_attack()) * f(r["2"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
                   + (f(hero.getTotal_added_physical_attack()) * f(r["2"].SKILL_EXTRA_PHYSICAL_ATTACK))
+                  + (f(r["2"].SKILL_BASE_PHYSICAL_ATTACK_GR) * f(skill_2_lvl))
                   )
 
                hero.setSkill_magic_damage_3(i(r["2"].SKILL_BASE_MAGIC_DAMAGE) 
                   + (f(hero.getTotal_magic_attack()) * f(r["2"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
                   + (f(hero.getTotal_added_magic_attack()) * f(r["2"].SKILL_EXTRA_PHYSICAL_ATTACK))
+                  + (f(r["2"].SKILL_BASE_MAGIC_DAMAGE_GR) * f(skill_2_lvl))
                   )
 
                hero.setSkill_cooldown_3( r["2"].SKILL_BASE_COOLDOWN - (i(r["2"].SKILL_BASE_COOLDOWN) * f((hero.getTotal_cdr()/100))))
                hero.setSkill_mana_3(r["2"].SKILL_BASE_MANA_COST)
 
-               // ultimate
+               ////////////////////////////////END SKILL 2//////////////////////////////////////////
+
+
+
+               ////////////////////////////////ULTIMATE//////////////////////////////////////////
+
                hero.setSkill_physical_damage_4(i(r["3"].SKILL_BASE_PHYSICAL_DAMAGE)
                   + (f(hero.getTotal_physical_attack()) * f(r["3"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
                   + (f(hero.getTotal_added_physical_attack()) * f(r["3"].SKILL_EXTRA_PHYSICAL_ATTACK))
+                  + (f(r["3"].SKILL_BASE_PHYSICAL_ATTACK_GR) * f(skill_3_lvl))
+
                   )
 
                hero.setSkill_magic_damage_4(i(r["3"].SKILL_BASE_MAGIC_DAMAGE) 
                   + (f(hero.getTotal_magic_attack()) * f(r["3"].SKILL_EXTRA_TOTAL_PHYSICAL_ATTACK))
                   + (f(hero.getTotal_added_magic_attack()) * f(r["3"].SKILL_EXTRA_PHYSICAL_ATTACK))
+                  + (f(r["3"].SKILL_BASE_MAGIC_DAMAGE_GR) * f(skill_3_lvl))
                   )
 
                hero.setSkill_cooldown_4( r["3"].SKILL_BASE_COOLDOWN - (i(r["3"].SKILL_BASE_COOLDOWN) * f((hero.getTotal_cdr()/100))))
                hero.setSkill_mana_4(r["3"].SKILL_BASE_MANA_COST)
+
+               ////////////////////////////////////////END ULTIMATE///////////////////////////////////
 
 
 
@@ -389,7 +426,7 @@ function show_stat(hero, role)
           set('#mana_3',hero.getSkill_mana_3())
           set('#mana_4',hero.getSkill_mana_4())
 
-          // attributes
+          // attributes 
 
           set('#hp', c(hero.getHp() + hero.getEm_hp() + hero.getTalent_hp()))
           set('#mana', c(hero.getMana() + hero.getEm_mana() + hero.getTalent_mana()))
@@ -404,7 +441,7 @@ function show_stat(hero, role)
           set('#spell_vamp', c(hero.getSpellVamp() + hero.getEm_spell_vamp() + hero.getTalent_spell_vamp()))
           set('#move_speed', f(hero.getMoveSpeed()) + c(hero.getMoveSpeed() * (hero.getEm_move_speed_per() + hero.getTalent_move_speed_per())))
           set('#cooldown_reduction', c(hero.getCdr() + hero.getEm_cdr() + hero.getTalent_cd_reduction()))
-          set('#attack_speed', f(hero.getAttackSpeed() + f(hero.getEm_atk_speed() /100) + f((hero.getTalent_attack_speed()/100))))
+          set('#attack_speed', f(hero.getAttackSpeed() + f(hero.getEm_atk_speed() /100) + f((hero.getTalent_attack_speed()/100))).toFixed(2))
           set('#crit_chance', c(hero.getCritChance() + hero.getEm_crit_chance() + hero.getTalent_crit_chance()))
           set('#attack', c(hero.getAttack() + hero.getEm_attack() + hero.getTalent_physical_attack()))
           set('#crit_reduction', c(hero.getCritReduction()))
@@ -506,7 +543,6 @@ function add_talent_t2(hero, talent_t2 , role)
 }
 
 
-
 function getChampionStat(id, 
   level, 
   slot1 = 95, 
@@ -519,7 +555,10 @@ function getChampionStat(id,
   emblem_level = 0, 
   potion = 95,
   talent_t1 = 55,
-  talent_t2 = 55
+  talent_t2 = 55,
+  skill_1_lvl = 0,
+  skill_2_lvl = 0, 
+  skill_3_lvl = 0
 
   )
 
@@ -568,7 +607,7 @@ function getChampionStat(id,
             add_emblem(hero, emblem_id , role)
             add_talent_t1(hero,talent_t1 , role)
             add_talent_t2(hero,talent_t2 , role)
-            add_skill(hero, id ,role)
+            add_skill(hero, id ,role,skill_1_lvl,skill_2_lvl,skill_3_lvl)
   
 
         },
@@ -597,6 +636,9 @@ $(".btn,#hero,#level,.slot,input[name='talent_tier_1'],input[name='talent_tier_2
     var emblem_level = $("#em_level option:selected").val()
     var talent_t1 = $("#talent_tier_1 option:selected").val() 
     var talent_t2 = $("#talent_tier_2 option:selected").val() 
+    var skill_1_lvl =  $("#skill_level_1 option:selected").val()
+    var skill_2_lvl =  $("#skill_level_2 option:selected").val() 
+    var skill_3_lvl =  $("#skill_level_3 option:selected").val()  
 
     var c = 1
     var magic_dmg_done = 0
@@ -633,7 +675,10 @@ $(".btn,#hero,#level,.slot,input[name='talent_tier_1'],input[name='talent_tier_2
       emblem_level, 
       potion , 
       talent_t1, 
-      talent_t2
+      talent_t2,
+      skill_1_lvl,
+      skill_2_lvl, 
+      skill_3_lvl 
       )
 });
 
