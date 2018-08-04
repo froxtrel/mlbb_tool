@@ -2,8 +2,8 @@
 
 	 <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
    <br><br>
-   <div class="alert alert-warning">
-     <strong>TODO :</strong> 
+   <div class="alert alert-success">
+     <strong>TODO : FIX PHYSICAL PEN FLAT/PER </strong> 
    </div>
 
     <ul class="nav nav-tabs">
@@ -34,22 +34,22 @@
         </div>
  -->
                   <select class="form-control" id="hero" name="hero" required>
-                        <option value="" disabled selected>Select your champion</option>
+                        <option value="" disabled selected>Select  champion</option>
                            <?php foreach ($hero as $row) :?>
-                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['HERO_PHOTO'];?>"> <?=$row['HERO_ROLE'];?> : <b> <?=$row['HERO_NAME'];?> </b></option>
+                              <option  value="<?=$row['ID'];?>" data-image="<?=$row['HERO_PHOTO'];?>" <?=$row['STATUS'];?>> <?=$row['HERO_ROLE'];?> : <b> <?=$row['HERO_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
                      <select class="form-control" id="level" name="level" required>
-                        <option value="" disabled selected>Select your champion level</option>
+                        <option value="" disabled selected>Select  champion level</option>
                            <?php $x = 0; while ( $x <= 14) {;?>
                             <option value="<?=$x;?>"> CHAMPION LEVEL : <?=$x + 1;?> </option>
                            <?php $x++; };?>
                       </select>
                     <p>
                     <p>
-                     <select class="form-control" id="skin" name="skin" required>
-                        <option value="" disabled selected>Select your champion skin</option>
+                     <select class="form-control" id="skin" name="skin" required disabled>
+                        <option value="" disabled selected>Select  champion skin</option>
                            <!-- <?php $x = 0; while ( $x <= 14) {;?>
                             <option value="<?=$x;?>"> CHAMPION LEVEL : <?=$x + 1;?> </option>
                            <?php $x++; };?> -->
@@ -103,14 +103,14 @@
         <center>EMBLEM</center><p></p>
 
                   <select class=" slot form-control" id="emblem" name="emblem" required>
-                        <option value="10" disabled selected>Select your emblem </option>
+                        <option value="10" disabled selected>Select  emblem </option>
                            <?php foreach ($emblem as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['EMBLEM_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
                      <select class=" slot form-control" id="em_level" name="em_level" required>
-                        <option value="0" disabled selected>Select your emblem level</option>
+                        <option value="0" disabled selected>Select  emblem level</option>
                            <?php $x = 0; while ( $x <= 60) {;?>
                             <option value="<?=$x;?>"> EMBLEM LEVEL : <?=$x;?> </option>
                            <?php $x++; };?>
@@ -122,21 +122,21 @@
         <center>TALENT </center><p></p>
 
                    <select class=" slot form-control" id="talent_tier_1" name="talent_tier_1" required>
-                        <option value="55" disabled selected>Select your talent ( TIER 1 ) </option>
+                        <option value="55" disabled selected>Select  talent ( TIER 1 ) </option>
                            <?php foreach ($talent_tier_1 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
                     <select class=" slot form-control" id="talent_tier_2" name="talent_tier_2" required>
-                        <option value="55" disabled selected>Select your talent ( TIER 2 ) </option>
+                        <option value="55" disabled selected>Select  talent ( TIER 2 ) </option>
                            <?php foreach ($talent_tier_2 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?>
                       </select>
                     <p>
-                     <select class=" slot form-control" id="talent_tier_3" name="talent_tier_3" required>
-                        <option value="55" disabled selected>Select your talent ( TIER 3 ) </option>
+                     <select class=" slot form-control" id="talent_tier_3" name="talent_tier_3" required disabled>
+                        <option value="55" disabled selected>Select  talent ( TIER 3 ) </option>
                          <!--   <?php foreach ($talent_tier_3 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?> -->
@@ -147,8 +147,8 @@
         <center>ABILITY BUFF </center><p></p>
 
                  
-                    <select class=" slot form-control" id="jungle_buff" name="jungle_buff" required>
-                        <option value="55" disabled selected>Select your ability buff </option>
+                    <select class=" slot form-control" id="jungle_buff" name="jungle_buff" required disabled>
+                        <option value="55" disabled selected>Select  ability buff </option>
                           <!--  <?php foreach ($talent_tier_1 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?> -->
@@ -157,8 +157,8 @@
 
          <center>BATTLE SPELL </center><p></p>
 
-                    <select class=" slot form-control" id="battle_spell" name="battle_spell" required>
-                        <option value="55" disabled selected>Select your battle spell </option>
+                    <select class=" slot form-control" id="battle_spell" name="battle_spell" required disabled>
+                        <option value="55" disabled selected>Select  battle spell </option>
                           <!--  <?php foreach ($talent_tier_1 as $row) :?>
                               <option value="<?=$row['ID'];?>" data-image="<?=$row['EMBLEM_PHOTO'];?>"> &nbsp; &nbsp; <b> <?=$row['TALENT_NAME'];?> </b></option>
                            <?php endforeach;?> -->
@@ -181,7 +181,7 @@
                 <center><p>SKILL 1</p></center>
                   <p>
                        <select class="slot form-control" id="skill_level_1" name="skill_level_1" required>
-                          <option value="0" disabled selected>Select your skill 1 level</option>
+                          <option value="0" disabled selected>Select  skill 1 level</option>
                               <?php $x = 0; while ( $x <= 5) {;?>
                           <option value="<?=$x;?>"> SKILL LEVEL : <?=$x + 1;?> </option>
                               <?php $x++; };?>
@@ -193,7 +193,7 @@
                 <center><p>SKILL 2</p></center>
                   <p>
                        <select class="slot form-control" id="skill_level_2" name="skill_level_2" required>
-                          <option value="0" disabled selected>Select your skill 2  level</option>
+                          <option value="0" disabled selected>Select  skill 2  level</option>
                               <?php $x = 0; while ( $x <= 5) {;?>
                           <option value="<?=$x;?>"> SKILL LEVEL : <?=$x + 1;?> </option>
                               <?php $x++; };?>
@@ -205,7 +205,7 @@
                 <center><p>ULTIMATE</p></center>
                   <p>
                        <select class="slot form-control" id="skill_level_3" name="skill_level_3" required>
-                          <option value="0" disabled selected>Select your ultimate level</option>
+                          <option value="0" disabled selected>Select  ultimate level</option>
                              <?php $x = 0; while ( $x <= 2) {;?>
                           <option value="<?=$x;?>"> ULTIMATE LEVEL : <?=$x + 1;?> </option>
                               <?php $x++; };?>

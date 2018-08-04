@@ -2,7 +2,7 @@
 <div class="container" >
 	<div class="row">
 		<div class="col-md-12">
-			<br><br><br>
+			
 			<span class="label label-primary">Patch Version : 1.2.89.304.2</span>
         	 <br><br>
 			 <table data-sort-name="stargazers_count" data-sort-order="desc" data-toggle="table" class="table-striped">
