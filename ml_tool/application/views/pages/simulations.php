@@ -3,7 +3,7 @@
 	 <span class="label label-primary">Patch Version : 1.2.89.304.2</span>
    <br><br>
    <div class="alert alert-success">
-     <strong>TODO : FIX PHYSICAL PEN FLAT/PER </strong> 
+     <strong>TODO : FIX PHYSICAL/MAGIC PEN FLAT/PER/MANA COST GROWTH IN SKILL </strong> 
    </div>
 
     <ul class="nav nav-tabs">
@@ -23,16 +23,6 @@
 
         <center>CHAMPION</center><p></p>
 
-       <!--  <div class="radio">
-          <label><input type="radio" name="hero_type" value="*" checked> ALL </label> &nbsp;
-          <label><input type="radio" name="hero_type" value="" > Assasin </label> &nbsp;
-          <label><input type="radio" name="hero_type" value="" > Tank </label> &nbsp;
-          <label><input type="radio" name="hero_type" value="" > Fighter </label> &nbsp;
-          <label><input type="radio" name="hero_type" value="" > Mage </label> &nbsp;
-          <label><input type="radio" name="hero_type" value="" > Marksmen </label> &nbsp;
-          <label><input type="radio" name="hero_type" value="" > Support </label> &nbsp;
-        </div>
- -->
                   <select class="form-control" id="hero" name="hero" required>
                         <option value="" disabled selected>Select  champion</option>
                            <?php foreach ($hero as $row) :?>
@@ -59,16 +49,6 @@
                   <!--  <h3><b> <span class="glyphicon glyphicon-subscript"></span> ITEM </b></h3>  -->
                   <hr>
                   <center> ITEM </center>
-
-          <!-- <div class="radio">
-            <label><input type="radio" name="item_type" value="*" checked> ALL </label> &nbsp;
-            <label><input type="radio" name="item_type" value="ATTACK" > Attack </label> &nbsp;
-            <label><input type="radio" name="item_type" value="MAGIC" > Magic </label> &nbsp;
-            <label><input type="radio" name="item_type" value="DEFENSE" > Defense </label> &nbsp;
-            <label><input type="radio" name="item_type" value="MOVEMENT" > Movement </label> &nbsp;
-            <label><input type="radio" name="item_type" value="JUNGLE" > Jungle </label> &nbsp;
-            <label><input type="radio" name="item_type" value="BASIC" > Basic </label> &nbsp;
-          </div> -->
 
             <?php $x = 1; while ( $x <= 6) {;?>
 
